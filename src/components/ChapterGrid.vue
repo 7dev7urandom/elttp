@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import type { Book, Lesson } from '../types';
-import ChapterCard from './chapterCard.vue';
+import BookCard from './BookCard.vue';
+import ChapterCard from './ChapterCard.vue';
 
 const props = defineProps<{ book: Book, lesson: Lesson }>();
 
-const chapters = props.lesson.chapters;
+const chapters = props.lesson.chapters.length ? props.lesson.chapters : [{ time: 0, title: props.lesson.title! }];
+if(chapters.length === 1) {
+    window.location.assign("https://www.youtube.com/watch?v=" + props.lesson.videoId + "&list=" + props.book.playlistId + "&t=" + chapters[0].time)
+}
+console.log(props.lesson, chapters);
 
 function animDur(index: number) {
     return {

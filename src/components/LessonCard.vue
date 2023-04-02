@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { Lesson } from '../types';
 
-const props = defineProps<{ lesson: Lesson, playlistId: string }>();
+const props = defineProps<{ lesson: Lesson, playlistId: string, isEdgecase?: boolean }>();
 
 function goToVideo() {
-    window.location.hash = `${window.location.hash}L${props.lesson.lessonNumber}`;
+    if(props.isEdgecase) window.location.hash = `${window.location.hash}UXL${props.lesson.videoId}`;
+    else window.location.hash = `${window.location.hash}L${props.lesson.lessonNumber}`;
 }
 </script>
 

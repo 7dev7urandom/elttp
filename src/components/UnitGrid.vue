@@ -26,7 +26,7 @@ function openUnit(unit: string) {
     <div class="unit-grid">
         <div class="unit-grid__item" v-for="(unitI, index) in units" :key="unitI" :style="animDur(index)">
             <UnitCard :name="unitI" v-if="unitI.startsWith('Unit')" @click="openUnit(unitI)"/>
-            <LessonCard :lesson="unit.lessons.find(l => l.title === unitI)!" :playlist-id="unit.playlistId" v-else />
+            <LessonCard :lesson="unit.lessons.find(l => l.title === unitI)!" :playlist-id="unit.playlistId" :is-edgecase="true" v-else />
         </div>
     </div>
 </template>

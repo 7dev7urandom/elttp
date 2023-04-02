@@ -19,7 +19,7 @@ const page = ref<Page>(Page.Home);
 // Parse the handle of format #M7.2U2L3
 function parseHandle() {
     if(window.location.hash) {
-        const regex = /#M(\d+(?:\.\d)?)(?:(U(\d+)(?:L(\d))?))?/.exec(window.location.hash);
+        const regex = /#M(\d+(?:\.\d)?)(?:(U(\d+|X)(?:L([A-Za-z0-9\-_]+|\d))?))?/.exec(window.location.hash);
         if(regex) {
             const [, book, , unit, lesson] = regex;
             if(lesson) {
@@ -48,6 +48,16 @@ function parseHandle() {
 parseHandle();
 window.addEventListener("hashchange", parseHandle);
 
+const theLesson = computed(() => {
+    if(page.value === Page.Lesson) {
+        if(currentUnit.value === "X") {
+            return theBookData.value.lessons.find(l => l.videoId === currentLesson.value)!;
+        }
+        return theBookData.value.lessons.find(l => l.unitNumber === parseInt(currentUnit.value) && l.lessonNumber === parseInt(currentLesson.value))!;
+    }
+    return null;
+});
+
 </script>
 
 <template>
@@ -55,5 +65,5 @@ window.addEventListener("hashchange", parseHandle);
     <BookGrid :data="youtubeData" v-if="page === Page.Home" />
     <UnitGrid :unit="theBookData" v-else-if="page === Page.Book"/>
     <LessonGrid :book="theBookData" :unit="parseInt(currentUnit)" v-else-if="page === Page.Unit"/>
-    <ChapterGrid :book="theBookData" :lesson="theBookData.lessons.find(l => l.unitNumber === parseInt(currentUnit) && l.lessonNumber === parseInt(currentLesson))!" v-else-if="page === Page.Lesson"/>
+    <ChapterGrid :book="theBookData" :lesson="theLesson!" v-else-if="page === Page.Lesson"/>
 </template>

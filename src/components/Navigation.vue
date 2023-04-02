@@ -3,26 +3,29 @@ import { computed, ref } from 'vue';
 import { Book, Page } from '../types';
 
 const props = defineProps<{ page: Page, book: string, unit: string, lesson: string, youtubeData: Book[] }>();
+const theBookData = computed(() => props.youtubeData.find(b => b.playlistId === props.book)!);
 const routes = computed<string[]>(() => {
     if(props.page === Page.Home) {
     } else if(props.page === Page.Book) {
-        return [props.youtubeData.find(b => b.playlistId === props.book)!.playlistTitle.split(' - ')[0]];
+        return [theBookData.value.playlistTitle.split(' - ')[0]];
     } else if(props.page === Page.Unit) {
-        return [props.youtubeData.find(b => b.playlistId === props.book)!.playlistTitle.split(' - ')[0], "Unit " + props.unit];
+        return [theBookData.value.playlistTitle.split(' - ')[0], "Unit " + props.unit];
     } else if(props.page === Page.Lesson) {
-        return [props.youtubeData.find(b => b.playlistId === props.book)!.playlistTitle.split(' - ')[0], "Unit " + props.unit, "Lesson " + props.lesson];
+        if(props.unit === "X")
+            return [theBookData.value.playlistTitle.split(' - ')[0], theBookData.value.lessons.find(l => l.videoId === props.lesson)!.title!];
+        return [theBookData.value.playlistTitle.split(' - ')[0], "Unit " + props.unit, "Lesson " + props.lesson];
     }
-    return [""];
+    return [];
 });
 function goToPart(part: number) {
     if (part === 0) {
         window.location.hash = "";
     } else if (part === 1) {
-        window.location.hash = "#M" + props.youtubeData.find(b => b.playlistId === props.book)!.playlistTitle.split(' - ')[0].split(' ')[1];
+        window.location.hash = "#M" + theBookData.value.playlistTitle.split(' - ')[0].split(' ')[1];
     } else if(part === 2) {
-        window.location.hash = "#M" + props.youtubeData.find(b => b.playlistId === props.book)!.playlistTitle.split(' - ')[0].split(' ')[1] + "U" + props.unit;
+        window.location.hash = "#M" + theBookData.value.playlistTitle.split(' - ')[0].split(' ')[1] + "U" + props.unit;
     } else if(part === 3) {
-        window.location.hash = "#M" + props.youtubeData.find(b => b.playlistId === props.book)!.playlistTitle.split(' - ')[0].split(' ')[1] + "U" + props.unit + "L" + props.lesson;
+        window.location.hash = "#M" + theBookData.value.playlistTitle.split(' - ')[0].split(' ')[1] + "U" + props.unit + "L" + props.lesson;
     }
 }
 </script>
