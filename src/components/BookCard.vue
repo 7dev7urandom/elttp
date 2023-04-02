@@ -7,7 +7,7 @@ defineEmits(['click']);
 
 function getBookCover(book: Book) {
     const regex = /Book (.+) -/;
-    const cover = `/bookCovers/M${book.playlistTitle.match(regex)![1]}.jpg`;
+    const cover = `elttp/bookCovers/M${book.playlistTitle.match(regex)![1]}.jpg`;
     return cover;
 }
 </script>
