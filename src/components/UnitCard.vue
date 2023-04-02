@@ -25,7 +25,6 @@ defineEmits(["click"]);
     box-shadow: 0 0 0.5em #00000033;
     border: #444 1px solid;
     transition: all 300ms;
-    min-width: 250px;
 }
 
 .unit-card:hover {

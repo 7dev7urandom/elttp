@@ -33,7 +33,13 @@ function emits(pId: string) {
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     grid-template-rows: repeat(auto-fill, minmax(0, 1fr));
     grid-gap: 3em 1.5em;
-    padding: 1em;
+    padding: .5em;
+}
+@media (max-width: 600px) {
+    .book-grid {
+        grid-template-columns: repeat(2, calc(50% - .5em));
+        grid-gap: 3em 1em;
+    }
 }
 .book-grid__item {
     display: flex;

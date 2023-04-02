@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import ChooserGrid from './components/ChooserGrid.vue';
+
+function goToHome() {
+  window.location.hash = "";
+}
 </script>
 
 <template>
   <!-- Start with a title -->
-  <h1>ELTTP English for Secondary Schools Audio Supplement Explorer</h1>
+  <h1 @click="goToHome">ELTTP English for Secondary Schools Audio Supplement Explorer</h1>
   <ChooserGrid />
 </template>
 
@@ -24,7 +28,9 @@ import ChooserGrid from './components/ChooserGrid.vue';
 h1 {
   animation: fadeIn 2ms ease-in 2ms forwards;
   opacity: 0;
-  margin-top: 0;
+  margin: 0;
+  font-size: 1.5em;
+  text-size-adjust: none;
 }
 @keyframes fadeIn {
     0%, 1% {

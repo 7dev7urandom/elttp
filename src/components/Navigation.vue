@@ -12,18 +12,39 @@ const routes = computed<string[]>(() => {
     } else if(props.page === Page.Lesson) {
         return [props.youtubeData.find(b => b.playlistId === props.book)!.playlistTitle.split(' - ')[0], "Unit " + props.unit, "Lesson " + props.lesson];
     }
-    return [];
+    return [""];
 });
-
+function goToPart(part: number) {
+    if (part === 0) {
+        window.location.hash = "";
+    } else if (part === 1) {
+        window.location.hash = "#M" + props.youtubeData.find(b => b.playlistId === props.book)!.playlistTitle.split(' - ')[0].split(' ')[1];
+    } else if(part === 2) {
+        window.location.hash = "#M" + props.youtubeData.find(b => b.playlistId === props.book)!.playlistTitle.split(' - ')[0].split(' ')[1] + "U" + props.unit;
+    } else if(part === 3) {
+        window.location.hash = "#M" + props.youtubeData.find(b => b.playlistId === props.book)!.playlistTitle.split(' - ')[0].split(' ')[1] + "U" + props.unit + "L" + props.lesson;
+    }
+}
 </script>
 <template>
-    <span v-for="r in routes">{{ r }}</span>
+    <div>
+        <span @click="goToPart(0)">Home</span>
+        <span class="arrow" v-for="(r, index) in routes" @click="goToPart(index + 1)">
+            <span>{{ r }}</span>
+        </span>
+    </div>
 </template>
 <style scoped>
-span::before {
-    content: '>';
+span.arrow::before {
+    content: ' > ';
+    text-decoration: none;
 }
-span {
-    
+div {
+    text-align: start;
+    padding: 1em;
+}
+span:not(.arrow) {
+    text-decoration: underline;
+    cursor: pointer;
 }
 </style>

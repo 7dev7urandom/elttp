@@ -38,6 +38,12 @@ function openUnit(unit: string) {
     grid-gap: 3em 1.5em;
     padding: 1em;
 }
+@media (max-width: 600px) {
+    .unit-grid {
+        grid-template-columns: repeat(2, calc(50% - .5em));
+        grid-gap: 3em 1em;
+    }
+}
 .unit-grid__item {
     display: flex;
     align-items: center;
