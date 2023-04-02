@@ -24,13 +24,12 @@ function goToVideo() {
     justify-content: center;
     width: 100%;
     height: 100%;
-    padding: 1em;
+    padding: .5em;
     border-radius: 0.5em;
     background-color: #444;
     box-shadow: 0 0 0.5em #00000033;
     border: #444 1px solid;
     transition: all 300ms;
-    min-width: 250px;
 }
 
 .chapter-card:hover {

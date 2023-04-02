@@ -35,7 +35,7 @@ function emits(pId: string) {
     grid-gap: 3em 1.5em;
     padding: .5em;
 }
-@media (max-width: 600px) {
+@media (max-width: 650px) {
     .book-grid {
         grid-template-columns: repeat(2, calc(50% - .5em));
         grid-gap: 3em 1em;

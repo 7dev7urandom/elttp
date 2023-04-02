@@ -31,7 +31,7 @@ function animDur(index: number) {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     grid-template-rows: repeat(auto-fill, minmax(0, 1fr));
-    grid-gap: 3em 1.5em;
+    grid-gap: 2em 1.5em;
     padding: 1em;
 }
 .chapter-grid__item {
