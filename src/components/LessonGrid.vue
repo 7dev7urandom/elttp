@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Book } from '../types';
-import LessonCard from './lessonCard.vue';
+import LessonCard from './LessonCard.vue';
 
 const props = defineProps<{ book: Book, unit: number }>();
 
