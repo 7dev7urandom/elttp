@@ -29,9 +29,9 @@ function getBookCover(book: Book) {
     height: 100%;
     padding: 1em;
     border-radius: 0.5em;
-    background-color: #444;
+    background-color: var(--card-color);
     box-shadow: 0 0 0.5em #00000033;
-    border: #444 1px solid;
+    border: var(--card-color) 1px solid;
     transition: all 300ms;
     /* min-width: 250px; */
 }
@@ -40,7 +40,7 @@ function getBookCover(book: Book) {
     box-shadow: 0 0 1em #00000033;
     transform: scale(1.02);
     cursor: pointer;
-    border: #aaa 1px solid;
+    border: var(--card-border-color) 1px solid;
 }
 .book-card img {
     width: 100%;

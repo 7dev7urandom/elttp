@@ -21,9 +21,9 @@ defineEmits(["click"]);
     height: 100%;
     padding: .5em;
     border-radius: 0.5em;
-    background-color: #444;
+    background-color: var(--card-color);
     box-shadow: 0 0 0.5em #00000033;
-    border: #444 1px solid;
+    border: var(--card-color) 1px solid;
     transition: all 300ms;
 }
 
@@ -31,7 +31,7 @@ defineEmits(["click"]);
     box-shadow: 0 0 1em #00000033;
     transform: scale(1.02);
     cursor: pointer;
-    border: #aaa 1px solid;
+    border: var(--card-border-color) 1px solid;
 }
 .unit-card img {
     width: 100%;
