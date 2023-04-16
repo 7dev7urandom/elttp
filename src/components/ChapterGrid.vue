@@ -22,7 +22,7 @@ function animDur(index: number) {
 <template>
     <div class="chapter-grid">
         <div class="chapter-grid__item" v-for="(chapter, index) in chapters" :key="chapter.time" :style="animDur(index)">
-            <ChapterCard :chapter="chapter" :playlist-id="book.playlistId" :lesson="lesson" />
+            <ChapterCard :link="`https://www.youtube.com/watch?v=${lesson.videoId}&list=${book.playlistId}&t=${chapter.time}`" :title="chapter.title" />
         </div>
     </div>
 </template>

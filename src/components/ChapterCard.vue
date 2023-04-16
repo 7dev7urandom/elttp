@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import { Chapter, Lesson } from '../types';
 
-const props = defineProps<{ chapter: Chapter, playlistId: string, lesson: Lesson }>();
-
+// const props = defineProps<{ chapter: Chapter, playlistId: string, lesson: Lesson }>();
+const props = defineProps<{ link: string, title: string }>();
 function goToVideo() {
-    window.location.assign(`https://www.youtube.com/watch?v=${props.lesson.videoId}&list=${props.playlistId}&t=${props.chapter.time}`);
+    window.location.assign(props.link);
 }
 </script>
 
 <template>
     <div class="chapter-card" @click="goToVideo">
         <div class="chapter-card__content">
-            <h3 class="chapter-card__title">{{ chapter.title }}</h3>
+            <h3 class="chapter-card__title">{{ title }}</h3>
         </div>
     </div>
 </template>

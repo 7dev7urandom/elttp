@@ -10,10 +10,16 @@ export type Lesson = {
     chapters: Chapter[];
     title?: string;
 }
+export type Song = {
+    bookNumber: number;
+    videoId: string;
+    songName: string;
+}
 export type Book = {
     playlistId: string;
     playlistTitle: string;
     lessons: Lesson[];
+    songs?: Song[];
 }
 export type YoutubeData = Book[];
 

@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import type { Book } from '../types';
 import LessonCard from './LessonCard.vue';
 import UnitCard from './UnitCard.vue';
+import ChapterCard from './ChapterCard.vue';
 
 const props = defineProps<{ unit: Book }>();
 
@@ -27,6 +28,9 @@ function openUnit(unit: string) {
         <div class="unit-grid__item" v-for="(unitI, index) in units" :key="unitI" :style="animDur(index)">
             <UnitCard :name="unitI" v-if="unitI.startsWith('Unit')" @click="openUnit(unitI)"/>
             <LessonCard :lesson="unit.lessons.find(l => l.title === unitI)!" :playlist-id="unit.playlistId" :is-edgecase="true" v-else />
+        </div>
+        <div class="unit-grid__item" v-for="(song, index) in unit.songs ?? []" :key="song.videoId" :style="animDur(index + units.length)">
+            <ChapterCard :link="`https://www.youtube.com/watch?v=${song.videoId}&list=${unit.playlistId}`" :title="song.songName" />
         </div>
     </div>
 </template>

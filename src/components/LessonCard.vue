@@ -12,7 +12,7 @@ function goToVideo() {
 <template>
     <div class="lesson-card" @click="goToVideo">
         <div class="lesson-card__content">
-            <h3 class="lesson-card__title">M{{ lesson.bookNumber }} {{ lesson.unitNumber ? `Unit ${lesson.unitNumber} Lesson ${lesson.lessonNumber}` : lesson.title }}</h3>
+            <h3 class="lesson-card__title">{{ lesson.unitNumber ? `M${lesson.bookNumber} Unit ${lesson.unitNumber} Lesson ${lesson.lessonNumber}` : lesson.title }}</h3>
         </div>
     </div>
 </template>
