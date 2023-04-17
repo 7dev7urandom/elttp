@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import type { Book } from '../types';
 import LessonCard from './LessonCard.vue';
 import UnitCard from './UnitCard.vue';
-import ChapterCard from './ChapterCard.vue';
+import ChapterCard from './URLCard.vue';
 
 const props = defineProps<{ unit: Book }>();
 
@@ -21,16 +21,20 @@ function animDur(index: number) {
 function openUnit(unit: string) {
     window.location.hash = `${window.location.hash}U${unit.match(/Unit (\d+)/)![1]}`;
 }
+
+function openSongs() {
+    window.location.hash = `${window.location.hash}S`;
+}
 </script>
 
 <template>
     <div class="unit-grid">
+        <div class="unit-grid__item" v-if="unit.songs">
+            <UnitCard name="Songs" @click="openSongs" />
+        </div>
         <div class="unit-grid__item" v-for="(unitI, index) in units" :key="unitI" :style="animDur(index)">
             <UnitCard :name="unitI" v-if="unitI.startsWith('Unit')" @click="openUnit(unitI)"/>
             <LessonCard :lesson="unit.lessons.find(l => l.title === unitI)!" :playlist-id="unit.playlistId" :is-edgecase="true" v-else />
-        </div>
-        <div class="unit-grid__item" v-for="(song, index) in unit.songs ?? []" :key="song.videoId" :style="animDur(index + units.length)">
-            <ChapterCard :link="`https://www.youtube.com/watch?v=${song.videoId}&list=${unit.playlistId}`" :title="song.songName" />
         </div>
     </div>
 </template>

@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { Chapter, Lesson } from '../types';
-
-// const props = defineProps<{ chapter: Chapter, playlistId: string, lesson: Lesson }>();
 const props = defineProps<{ link: string, title: string }>();
 function goToVideo() {
     window.location.assign(props.link);

@@ -1,15 +1,11 @@
 <script setup lang="ts">
 import type { Book, Lesson } from '../types';
 import BookCard from './BookCard.vue';
-import ChapterCard from './URLCard.vue';
+import SongCard from './URLCard.vue';
 
-const props = defineProps<{ book: Book, lesson: Lesson }>();
+const props = defineProps<{ book: Book }>();
 
-const chapters = props.lesson.chapters.length ? props.lesson.chapters : [{ time: 0, title: props.lesson.title! }];
-if(chapters.length === 1) {
-    window.location.assign("https://www.youtube.com/watch?v=" + props.lesson.videoId + "&list=" + props.book.playlistId + "&t=" + chapters[0].time)
-}
-console.log(props.lesson, chapters);
+const songs = props.book.songs;
 
 function animDur(index: number) {
     return {
@@ -20,21 +16,21 @@ function animDur(index: number) {
 </script>
 
 <template>
-    <div class="chapter-grid">
-        <div class="chapter-grid__item" v-for="(chapter, index) in chapters" :key="chapter.time" :style="animDur(index)">
-            <ChapterCard :link="`https://www.youtube.com/watch?v=${lesson.videoId}&list=${book.playlistId}&t=${chapter.time}`" :title="chapter.title" />
+    <div class="song-grid">
+        <div class="song-grid__item" v-for="(song, index) in songs" :key="song.videoId" :style="animDur(index)">
+            <SongCard :link="`https://www.youtube.com/watch?v=${song.videoId}&list=${book.playlistId}`" :title="song.songName" />
         </div>
     </div>
 </template>
 <style scoped>
-.chapter-grid {
+.song-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     grid-template-rows: repeat(auto-fill, minmax(0, 1fr));
     grid-gap: 2em 1.5em;
     padding: 1em;
 }
-.chapter-grid__item {
+.song-grid__item {
     display: flex;
     align-items: center;
     justify-content: center;

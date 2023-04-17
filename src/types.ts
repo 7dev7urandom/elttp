@@ -26,6 +26,7 @@ export type YoutubeData = Book[];
 export enum Page {
     Home,
     Book,
+    Songs,
     Unit,
     Lesson
 }
