@@ -20,12 +20,17 @@ const routes = computed<string[]>(() => {
 function goToPart(part: number) {
     if (part === 0) {
         window.location.hash = "";
-    } else if (part === 1) {
-        window.location.hash = "#M" + theBookData.value.playlistTitle.split(' - ')[0].split(' ')[1];
-    } else if(part === 2) {
-        window.location.hash = "#M" + theBookData.value.playlistTitle.split(' - ')[0].split(' ')[1] + "U" + props.unit;
-    } else if(part === 3) {
-        window.location.hash = "#M" + theBookData.value.playlistTitle.split(' - ')[0].split(' ')[1] + "U" + props.unit + "L" + props.lesson;
+    } else {
+        const bookTitleArray = theBookData.value.playlistTitle.split(' - ')[0].split(' ');
+        const book = bookTitleArray[1] + (bookTitleArray[2] === "2nd" ? ".2" : "");
+        console.log(bookTitleArray, book);
+        if (part === 1) {
+            window.location.hash = "#M" + book;
+        } else if(part === 2) {
+            window.location.hash = "#M" + book + "U" + props.unit;
+        } else if(part === 3) {
+            window.location.hash = "#M" + book + "U" + props.unit + "L" + props.lesson;
+        }
     }
 }
 </script>

@@ -12,6 +12,7 @@ export type Lesson = {
 }
 export type Song = {
     bookNumber: number;
+    unitNumber: number;
     videoId: string;
     songName: string;
 }
