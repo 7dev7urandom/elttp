@@ -3,9 +3,10 @@ import StandardCard from './StandardCard.vue';
 type Titleable<T> = T & { title: string };
 const props = defineProps<{ items: Titleable<unknown>[] }>();
 
-function animDur(index: number) {
+function animDur(index: number, total: number) {
+    const TIME = 300;
     return {
-        animationDelay: `${100 + index * 50}ms`,
+        animationDelay: `${index / total * TIME}ms`,
     };
 }
 
@@ -13,8 +14,10 @@ function animDur(index: number) {
 
 <template>
     <div class="grid">
-        <div class="grid_item" v-for="(item, index) in props.items" :key="index" :style="animDur(index)">
-            <StandardCard :title="item.title" @click="$emit('select', item)" />
+        <div class="grid_item" v-for="(item, index) in props.items" :key="index" :style="animDur(index, props.items.length)">
+            <StandardCard :title="item.title" @select="$emit('select', item)">
+                <slot :item="item"></slot>
+            </StandardCard>
         </div>
     </div>
 </template>

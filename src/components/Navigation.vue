@@ -8,6 +8,8 @@ const routes = computed<string[]>(() => {
     if(props.page === Page.Home) {
     } else if(props.page === Page.Book) {
         return [theBookData.value.playlistTitle.split(' - ')[0]];
+    } else if (props.page === Page.Songs) {
+        return [theBookData.value.playlistTitle.split(' - ')[0], "Songs"];
     } else if(props.page === Page.Unit) {
         return [theBookData.value.playlistTitle.split(' - ')[0], "Unit " + props.unit];
     } else if(props.page === Page.Lesson) {
@@ -56,3 +58,7 @@ span:not(.arrow) {
     cursor: pointer;
 }
 </style>
+<!-- 
+    TODO:
+        Make this actual routing navigation
+ -->

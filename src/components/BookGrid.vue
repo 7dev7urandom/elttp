@@ -1,14 +1,8 @@
 <script setup lang="ts">
-import type { YoutubeData } from '../types';
-import BookCard from './BookCard.vue';
+import type { Book, YoutubeData } from '../types';
+import StandardGrid from './cardgrid/StandardGrid.vue';
 
 const props = defineProps<{ data: YoutubeData }>();
-
-function animDur(index: number) {
-    return {
-        animationDelay: `${100 + index * 50}ms`,
-    };
-}
 
 function emits(pId: string) {
     const title = props.data.find(b => b.playlistId === pId)!.playlistTitle;
@@ -17,31 +11,45 @@ function emits(pId: string) {
     else
         window.location.hash = `#M${title.match(/Book (\d+(?:\.\d)?)/)![1]}`;
 }
+function getBookCover(book: Book) {
+    const regex = /Book (.+) -/;
+    const cover = `bookCovers/M${book.playlistTitle.match(regex)![1]}.jpg`;
+    return cover;
+}
 
 </script>
 
 <template>
-    <div class="book-grid">
-        <div class="book-grid__item" v-for="(book, index) in data.sort((a, b) => a.playlistTitle.localeCompare(b.playlistTitle))" :key="book.playlistId" :style="animDur(index)">
-            <BookCard :book="book" @click="emits(book.playlistId)"/>
+    <StandardGrid :items="(data.sort((a, b) => a.playlistTitle.localeCompare(b.playlistTitle)) as any)" v-slot="{ item }" @select="(book) => emits(book.playlistId)">
+        <img :src="getBookCover(item as any)" alt="Book cover" />
+        <div class="book-card_content">
+            <h3 class="book-card_title">{{ (item as any).playlistTitle.split(" - ")[0] }}</h3>
         </div>
-    </div>
+    </StandardGrid>
 </template>
 <style scoped>
-.book-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(0, 1fr));
-    grid-gap: 3em 1.5em;
-    padding: .5em;
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 1em;
+    border-radius: 0.5em;
+    background-color: var(--card-color);
+    box-shadow: 0 0 0.5em #00000033;
+    border: var(--card-color) 1px solid;
+    transition: all 300ms;
+    /* min-width: 250px; */
 }
 @media (max-width: 650px) {
-    .book-grid {
-        grid-template-columns: repeat(2, calc(50% - .5em));
-        grid-gap: 3em 1em;
+    .grid {
+        grid-template-columns: repeat(2, calc(50% - .5em)) !important;
+        grid-gap: 3em 1em !important;
     }
 }
-.book-grid__item {
+.grid_item {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -63,5 +71,24 @@ function emits(pId: string) {
         opacity: 1;
         top: 0;
     }
+}
+.book-card_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.book-card_title {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: 600;
+    text-align: center;
+}
+.card img {
+    width: 100%;
+    height: auto;
+    max-width: 200px;
+    object-fit: cover;
 }
 </style>

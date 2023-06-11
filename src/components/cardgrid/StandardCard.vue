@@ -1,7 +1,9 @@
 <template>
-    <div class="card" @click="$emit('click')">
+    <div class="card" @click="$emit('select')">
         <div class="card_content">
-            <h3 class="card_title">{{ title }}</h3>
+            <slot>
+                <h3 class="card_title">{{ title }}</h3>
+            </slot>
         </div>
     </div>
 </template>

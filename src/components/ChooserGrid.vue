@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import BookGrid from './BookGrid.vue';
 import UnitGrid from './UnitGrid.vue';
-import LessonGrid from './LessonGrid.vue';
 import Navigation from './Navigation.vue';
 import youtubeData from '../data.json';
 import { computed, ref } from 'vue';
 import { type Book, Page, type Chapter, type Lesson } from '../types';
-import SongGrid from './SongGrid.vue';
 import StandardGrid from './cardgrid/StandardGrid.vue';
 
 const currentUnit = ref('');
@@ -25,7 +23,7 @@ function parseHandle() {
             const [, book, , unit, lesson] = regex;
             page.value = Page.Home;
             if(book) {
-                currentBook.value = (youtubeData.find((b) => b.playlistTitle.includes("Book " + book)) ?? youtubeData.find((b) => b.playlistTitle.includes("2nd Edition"))!).playlistId;
+                currentBook.value = (youtubeData.find((b) => b.playlistTitle.includes("Book " + book + " -")) ?? youtubeData.find((b) => b.playlistTitle.includes("2nd Edition"))!).playlistId;
                 page.value = Page.Book;
             }
             if(unit) {
@@ -84,9 +82,7 @@ function loadChapter(chapter: Chapter) {
     window.location.assign("https://www.youtube.com/watch?v=" + theLesson!.value!.videoId + "&list=" + theBookData.value.playlistId + "&t=" + chapter.time);
 }
 function loadLesson(lesson: Lesson) {
-    const bookTitleArray = theBookData.value.playlistTitle.split(' - ')[0].split(' ');
-    const book = bookTitleArray[1] + (bookTitleArray[2] === "2nd" ? ".2" : "");
-    window.location.hash = "#M" + book + "U" + lesson.unitNumber + "L" + lesson.lessonNumber;
+    window.location.hash = "#M" + lesson.bookNumber + "U" + lesson.unitNumber + "L" + lesson.lessonNumber;
 }
 function goToVideo(videoId: string) {
     window.location.assign("https://www.youtube.com/watch?v=" + videoId + "&list=" + theBookData.value.playlistId);
@@ -98,13 +94,11 @@ function goToVideo(videoId: string) {
     <Navigation :page="page" :book="currentBook" :unit="currentUnit" :lesson="currentLesson" :youtube-data="youtubeData" />
     <BookGrid :data="youtubeData" v-if="page === Page.Home" />
     <UnitGrid :unit="theBookData" v-else-if="page === Page.Book"/>
-    <!-- <SongGrid :book="theBookData" v-else-if="page === Page.Songs"/> -->
     <StandardGrid 
         :items="theBookData.songs?.map(s => ({ ...s, title: `Unit ${s.unitNumber} - ${s.songName}` }))!"
         v-else-if="page === Page.Songs"
         @select="s => goToVideo(s.videoId)"
     />
-    <!-- <LessonGrid :book="theBookData" :unit="parseInt(currentUnit)" v-else-if="page === Page.Unit"/> -->
     <StandardGrid 
         :items="theBookData.lessons
             .filter(l => l.unitNumber === parseInt(currentUnit))
@@ -112,5 +106,4 @@ function goToVideo(videoId: string) {
         v-else-if="page === Page.Unit" @select="loadLesson"
     />
     <StandardGrid :items="theLesson?.chapters ?? []" v-else-if="page === Page.Lesson" @select="loadChapter" />
-    <!-- <ChapterGrid :book="theBookData" :lesson="theLesson!" v-else-if="page === Page.Lesson"/> -->
 </template>
