@@ -1,25 +1,31 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { Book } from '../types';
+import { Book } from '../types';
 import StandardGrid from './cardgrid/StandardGrid.vue';
+import { mdiPrinterPosEditOutline } from '@mdi/js';
 
-const props = defineProps<{ unit: Book }>();
+const props = defineProps<{ book: Book }>();
 
 const units = computed(() => {
-    const units = new Set(props.unit.lessons.map((lesson) => lesson.unitNumber ? "Unit " + lesson.unitNumber : lesson.title!));
+    const units = new Set(props.book.lessons.map((lesson) => lesson.unitNumber ?? lesson.title!));
     return [...units];
+});
+const bookId = computed(() => {
+    return props.book.playlistTitle.includes("2nd Edition") ? 
+        props.book.playlistTitle.match(/Book (\d+(?:\.\d)?)/)![1] + '.2' :
+        props.book.playlistTitle.match(/Book (\d+(?:\.\d)?)/)![1];
 });
 
 const items = computed(() => {
-    const item: { title: string, callback: () => void }[] = [];
-    if(props.unit.songs && props.unit.songs.length > 0) {
-        item.push({ title: "Songs", callback: openSongs });
-    }
+    const item = [];
+    // if(props.book.songs && props.book.songs.length > 0) {
+    //     item.push({ title: "Songs" });
+    // }
     for(const unit of units.value) {
-        if(unit.startsWith("Unit")) {
-            item.push({ title: unit, callback: () => openUnit(unit) });
+        if(typeof unit === "number") {
+            item.push({ unit, title: "Unit " + unit });
         } else {
-            item.push({ title: unit, callback: () => openEdgeCase(unit) });
+            item.push({ title: unit });
         }
     }
     return item;
@@ -29,20 +35,16 @@ function openUnit(unit: string) {
     window.location.hash = `${window.location.hash}U${unit.match(/Unit (\d+)/)![1]}`;
 }
 
-function openSongs() {
-    window.location.hash = `${window.location.hash}S`;
-}
-
 function openEdgeCase(unitName: string) {
-    const lesson = props.unit.lessons.find(l => l.title === unitName);
+    const lesson = props.book.lessons.find(l => l.title === unitName);
     if(lesson?.chapters && lesson.chapters.length > 0) {
         window.location.hash = `M${lesson.bookNumber}UXL${lesson.videoId}`;
     } else {
-        window.location.assign(`https://www.youtube.com/watch?v=${props.unit.lessons.find(l => l.title === unitName)!.videoId}&list=${props.unit.playlistId}`);
+        window.location.assign(`https://www.youtube.com/watch?v=${props.book.lessons.find(l => l.title === unitName)!.videoId}&list=${props.book.playlistId}`);
     }
 }
 </script>
 
 <template>
-    <StandardGrid :items="items" @select="(item: any) => item.callback()" />
+    <StandardGrid :items="items" @select="(item: any) => $router.push(`/vocab-supplement/${bookId}/${item.unit ?? 'other/' + props.book.lessons.find(l => l.title === item.title)?.videoId}`)" />
 </template>

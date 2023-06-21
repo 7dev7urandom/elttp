@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import StandardCard from './StandardCard.vue';
 type Titleable<T> = T & { title: string };
-const props = defineProps<{ items: Titleable<unknown>[] }>();
+const props = defineProps<{ items: any[] }>();
 
 function animDur(index: number, total: number) {
     const TIME = 300;

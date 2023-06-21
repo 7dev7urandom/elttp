@@ -1,26 +1,24 @@
 <script setup lang="ts">
 import type { Book, YoutubeData } from '../types';
 import StandardGrid from './cardgrid/StandardGrid.vue';
+import data from '../data.json';
 
-const props = defineProps<{ data: YoutubeData }>();
-
-function emits(pId: string) {
-    const title = props.data.find(b => b.playlistId === pId)!.playlistTitle;
-    if(title.includes("2nd Edition"))
-        window.location.hash = `#M${title.match(/Book (\d+(?:\.\d)?)/)![1]}.2`;
-    else
-        window.location.hash = `#M${title.match(/Book (\d+(?:\.\d)?)/)![1]}`;
+function bookId(pId: string): string {
+    const title = data.find(b => b.playlistId === pId)!.playlistTitle;
+    return title.includes("2nd Edition") ? 
+        title.match(/Book (\d+(?:\.\d)?)/)![1] + '.2' :
+        title.match(/Book (\d+(?:\.\d)?)/)![1];
 }
 function getBookCover(book: Book) {
     const regex = /Book (.+) -/;
-    const cover = `bookCovers/M${book.playlistTitle.match(regex)![1]}.jpg`;
+    const cover = `/bookCovers/M${book.playlistTitle.match(regex)![1]}.jpg`;
     return cover;
 }
 
 </script>
 
 <template>
-    <StandardGrid :items="(data.sort((a, b) => a.playlistTitle.localeCompare(b.playlistTitle)) as any)" v-slot="{ item }" @select="(book) => emits(book.playlistId)">
+    <StandardGrid :items="(data.sort((a, b) => a.playlistTitle.localeCompare(b.playlistTitle)) as any)" v-slot="{ item }" @select="(book) => $router.push('/vocab-supplement/' + bookId(book.playlistId))">
         <img :src="getBookCover(item as any)" alt="Book cover" />
         <div class="book-card_content">
             <h3 class="book-card_title">{{ (item as any).playlistTitle.split(" - ")[0] }}</h3>
