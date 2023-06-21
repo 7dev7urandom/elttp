@@ -1,13 +1,12 @@
 import { createApp } from 'vue'
 import './style.css'
-import VocabSupplement from './routes/VocabSupplement.vue'
 import { RouteRecordRaw, createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
 import HomeVue from './routes/Home.vue'
-import BookGridVue from './components/BookGrid.vue'
-import UnitGridVue from './components/UnitGrid.vue'
-import LessonGridVue from './components/LessonGrid.vue'
-import ChapterGridVue from './components/ChapterGrid.vue'
+import BookGridVue from './components/vocab-supplement/BookGrid.vue'
+import UnitGridVue from './components/vocab-supplement/UnitGrid.vue'
+import LessonGridVue from './components/vocab-supplement/LessonGrid.vue'
+import ChapterGridVue from './components/vocab-supplement/ChapterGrid.vue'
 import youtubeData from './data.json';
 
 const routes: RouteRecordRaw[] = [

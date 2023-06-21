@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Book } from '../types';
-import StandardGrid from './cardgrid/StandardGrid.vue';
+import { Book } from '../../types';
+import StandardGrid from '../cardgrid/StandardGrid.vue';
 import { mdiPrinterPosEditOutline } from '@mdi/js';
 
 const props = defineProps<{ book: Book }>();

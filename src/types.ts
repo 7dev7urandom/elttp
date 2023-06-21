@@ -23,11 +23,3 @@ export type Book = {
     songs?: Song[];
 }
 export type YoutubeData = Book[];
-
-export enum Page {
-    Home,
-    Book,
-    Songs,
-    Unit,
-    Lesson
-}

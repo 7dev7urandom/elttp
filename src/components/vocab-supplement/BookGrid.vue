@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { Book, YoutubeData } from '../types';
-import StandardGrid from './cardgrid/StandardGrid.vue';
-import data from '../data.json';
+import type { Book } from '../../types';
+import StandardGrid from '../cardgrid/StandardGrid.vue';
+import data from '../../data.json';
 
 function bookId(pId: string): string {
     const title = data.find(b => b.playlistId === pId)!.playlistTitle;

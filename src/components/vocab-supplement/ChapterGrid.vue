@@ -2,9 +2,9 @@
     <StandardGrid :items="items" @select="(c: any) => loadVideo(c)" />
 </template>
 <script setup lang="ts">
-import StandardGrid from '../components/cardgrid/StandardGrid.vue';
+import StandardGrid from '../cardgrid/StandardGrid.vue';
 import { computed } from 'vue';
-import { Book, Chapter } from '../types';
+import { Book, Chapter } from '../../types';
 
 const props = defineProps<{ book: Book, unit?: string, lesson?: string, videoId?: string }>();
 const lesson = computed(() => {

@@ -1,39 +1,35 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { Book, Page } from '../types';
+import { useRouter } from 'vue-router';
 
-const props = defineProps<{ page: Page, book: string, unit: string, lesson: string, youtubeData: Book[] }>();
-const theBookData = computed(() => props.youtubeData.find(b => b.playlistId === props.book)!);
+const router = useRouter();
 const routes = computed<string[]>(() => {
-    if(props.page === Page.Home) {
-    } else if(props.page === Page.Book) {
-        return [theBookData.value.playlistTitle.split(' - ')[0]];
-    } else if (props.page === Page.Songs) {
-        return [theBookData.value.playlistTitle.split(' - ')[0], "Songs"];
-    } else if(props.page === Page.Unit) {
-        return [theBookData.value.playlistTitle.split(' - ')[0], "Unit " + props.unit];
-    } else if(props.page === Page.Lesson) {
-        if(props.unit === "X")
-            return [theBookData.value.playlistTitle.split(' - ')[0], theBookData.value.lessons.find(l => l.videoId === props.lesson)!.title!];
-        return [theBookData.value.playlistTitle.split(' - ')[0], "Unit " + props.unit, "Lesson " + props.lesson];
+    if(router.currentRoute.value.fullPath === '/') {
+        return [];
     }
-    return [];
+    switch(router.currentRoute.value.fullPath.split('/')[1]) {
+        case 'vocab-supplement':
+            const ret = ['Vocabulary Supplement'];
+            if(router.currentRoute.value.params.book) {
+                ret.push(`Book ${router.currentRoute.value.params.book}`);
+            } else return ret;
+            if(router.currentRoute.value.params.unit) {
+                ret.push(`Unit ${router.currentRoute.value.params.unit}`);
+            } else return ret;
+            if(router.currentRoute.value.params.lesson) {
+                ret.push(`Lesson ${router.currentRoute.value.params.lesson}`);
+            } else return ret;
+            return ret;
+        case 'songs':
+            return ['Songs'];
+        case 'books':
+            return ['Books'];
+        default:
+            return [];
+    }
 });
 function goToPart(part: number) {
-    if (part === 0) {
-        window.location.hash = "";
-    } else {
-        const bookTitleArray = theBookData.value.playlistTitle.split(' - ')[0].split(' ');
-        const book = bookTitleArray[1] + (bookTitleArray[2] === "2nd" ? ".2" : "");
-        console.log(bookTitleArray, book);
-        if (part === 1) {
-            window.location.hash = "#M" + book;
-        } else if(part === 2) {
-            window.location.hash = "#M" + book + "U" + props.unit;
-        } else if(part === 3) {
-            window.location.hash = "#M" + book + "U" + props.unit + "L" + props.lesson;
-        }
-    }
+    router.push(router.currentRoute.value.fullPath.split('/').slice(0, part + 1).join('/') || '/');
 }
 </script>
 <template>
@@ -58,7 +54,3 @@ span:not(.arrow) {
     cursor: pointer;
 }
 </style>
-<!-- 
-    TODO:
-        Make this actual routing navigation
- -->
