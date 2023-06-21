@@ -9,19 +9,23 @@ const routes = computed<string[]>(() => {
     }
     switch(router.currentRoute.value.fullPath.split('/')[1]) {
         case 'vocab-supplement':
-            const ret = ['Vocabulary Supplement'];
+            const vocab = ['Vocabulary Supplement'];
             if(router.currentRoute.value.params.book) {
-                ret.push(`Book ${router.currentRoute.value.params.book}`);
-            } else return ret;
+                vocab.push(`Book ${router.currentRoute.value.params.book}`);
+            } else return vocab;
             if(router.currentRoute.value.params.unit) {
-                ret.push(`Unit ${router.currentRoute.value.params.unit}`);
-            } else return ret;
+                vocab.push(`Unit ${router.currentRoute.value.params.unit}`);
+            } else return vocab;
             if(router.currentRoute.value.params.lesson) {
-                ret.push(`Lesson ${router.currentRoute.value.params.lesson}`);
-            } else return ret;
-            return ret;
+                vocab.push(`Lesson ${router.currentRoute.value.params.lesson}`);
+            } else return vocab;
+            return vocab;
         case 'songs':
-            return ['Songs'];
+            const songs = ['Songs'];
+            if(router.currentRoute.value.params.book) {
+                songs.push(`Book ${router.currentRoute.value.params.book}`);
+            }
+            return songs;
         case 'books':
             return ['Books'];
         default:
@@ -29,7 +33,7 @@ const routes = computed<string[]>(() => {
     }
 });
 function goToPart(part: number) {
-    router.push(router.currentRoute.value.fullPath.split('/').slice(0, part + 1).join('/') || '/');
+    router.push(router.currentRoute.value.fullPath.split('/').slice(0, part + 1).join('/') + '/');
 }
 </script>
 <template>

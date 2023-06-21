@@ -1,7 +1,14 @@
 <script setup lang="ts">
-import type { Book } from '../../types';
-import StandardGrid from '../cardgrid/StandardGrid.vue';
-import data from '../../data.json';
+import type { Book } from '../types';
+import StandardGrid from './cardgrid/StandardGrid.vue';
+import data from '../data.json';
+import { computed } from 'vue';
+
+const props = defineProps<{ songs?: boolean }>();
+
+const items = computed(() =>
+    data.filter(p => !props.songs || p.songs.length > 0).sort((a, b) => a.playlistTitle.localeCompare(b.playlistTitle))
+);
 
 function bookId(pId: string): string {
     const title = data.find(b => b.playlistId === pId)!.playlistTitle;
@@ -18,7 +25,7 @@ function getBookCover(book: Book) {
 </script>
 
 <template>
-    <StandardGrid :items="(data.sort((a, b) => a.playlistTitle.localeCompare(b.playlistTitle)) as any)" v-slot="{ item }" @select="(book) => $router.push('/vocab-supplement/' + bookId(book.playlistId))">
+    <StandardGrid :items="items" v-slot="{ item }" @select="(book) => $router.push(bookId(book.playlistId) + '/')">
         <img :src="getBookCover(item as any)" alt="Book cover" />
         <div class="book-card_content">
             <h3 class="book-card_title">{{ (item as any).playlistTitle.split(" - ")[0] }}</h3>
