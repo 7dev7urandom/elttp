@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import type { Book } from '../types';
+import { Book, BookGridType, YoutubeData } from '../types';
 import StandardGrid from './cardgrid/StandardGrid.vue';
-import data from '../data.json';
+import rawData from '../data.json';
 import { computed } from 'vue';
 
-const props = defineProps<{ songs?: boolean }>();
+const props = defineProps<{ type?: BookGridType }>();
+const data = props.type === BookGridType.VocabSupplement ? (rawData as YoutubeData).supplementVocabPlaylists : (rawData as YoutubeData).bookAudioPlaylists;
 
-const items = computed(() =>
-    data.filter(p => !props.songs || p.songs.length > 0).sort((a, b) => a.playlistTitle.localeCompare(b.playlistTitle))
+const songItems = computed(() =>
+    data.filter(p => !(props.type === BookGridType.Songs) || (p.songs?.length ?? 0) > 0).sort((a, b) => a.playlistTitle.localeCompare(b.playlistTitle))
 );
 
 function bookId(pId: string): string {
@@ -25,7 +26,7 @@ function getBookCover(book: Book) {
 </script>
 
 <template>
-    <StandardGrid :items="items" v-slot="{ item }" @select="(book) => $router.push(bookId(book.playlistId) + '/')">
+    <StandardGrid :items="songItems" v-slot="{ item }" @select="(book) => $router.push(bookId(book.playlistId) + '/')">
         <img :src="getBookCover(item as any)" alt="Book cover" />
         <div class="book-card_content">
             <h3 class="book-card_title">{{ (item as any).playlistTitle.split(" - ")[0] }}</h3>

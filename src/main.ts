@@ -4,31 +4,37 @@ import { RouteRecordRaw, createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
 import HomeVue from './routes/Home.vue'
 import BookGridVue from './components/BookGrid.vue'
-import UnitGridVue from './components/vocab-supplement/UnitGrid.vue'
-import LessonGridVue from './components/vocab-supplement/LessonGrid.vue'
-import ChapterGridVue from './components/vocab-supplement/ChapterGrid.vue'
+import UnitGridVue from './components/textbook-audio/UnitGrid.vue'
+import LessonGridVue from './components/textbook-audio/LessonGrid.vue'
+import ChapterGridVue from './components/textbook-audio/ChapterGrid.vue'
 import SongGridVue from './components/songs/SongGrid.vue'
+import SupplementPdfGridVue from './components/lesson-plans/SupplementPdfGrid.vue'
+import PageNotFoundVue from './components/PageNotFound.vue'
 import youtubeData from './data.json';
+import { BookGridType } from './types'
 
 function getBookFromNumber(bookNumber: any) {
-    return youtubeData.find((b) => b.playlistTitle.includes("Book " + bookNumber + " -")) ?? youtubeData.find((b) => b.playlistTitle.includes("2nd Edition"))!;
+    return youtubeData.bookAudioPlaylists.find((b) => b.playlistTitle.includes("Book " + bookNumber + " -")) ?? youtubeData.bookAudioPlaylists.find((b) => b.playlistTitle.includes("2nd Edition"))!;
 }
 
 const routes: RouteRecordRaw[] = [
     { path: '/', component: HomeVue },
     {
-        path: '/vocab-supplement',
-        component: BookGridVue
+        path: '/textbook-audio',
+        component: BookGridVue,
+        props: {
+            type: BookGridType.TextbookAudio
+        }
     },
     {
-        path: '/vocab-supplement/:book',
+        path: '/textbook-audio/:book',
         component: UnitGridVue,
         props: ({ params }) => ({
             book: getBookFromNumber(params.book)
         })
     },
     {
-        path: '/vocab-supplement/:book/:unit',
+        path: '/textbook-audio/:book/:unit',
         component: LessonGridVue,
         props: ({ params }) => ({
             book: getBookFromNumber(params.book),
@@ -36,7 +42,7 @@ const routes: RouteRecordRaw[] = [
         })
     },
     {
-        path: '/vocab-supplement/:book/other/:videoId',
+        path: '/textbook-audio/:book/other/:videoId',
         component: ChapterGridVue,
         props: ({ params }) => ({
             book: getBookFromNumber(params.book),
@@ -44,7 +50,7 @@ const routes: RouteRecordRaw[] = [
         })
     },
     {
-        path: '/vocab-supplement/:book/:unit/:lesson',
+        path: '/textbook-audio/:book/:unit/:lesson',
         component: ChapterGridVue,
         props: ({ params }) => ({
             book: getBookFromNumber(params.book),
@@ -53,10 +59,22 @@ const routes: RouteRecordRaw[] = [
         })
     },
     {
+        path: '/lesson-plans',
+        component: SupplementPdfGridVue
+    },
+    // '/lesson-plans/:book' handled automatically by public folder
+    {
+        path: '/vocabulary-supplement',
+        component: BookGridVue,
+        props: {
+            type: BookGridType.VocabSupplement
+        }
+    },
+    {
         path: '/songs',
         component: BookGridVue,
         props: {
-            songs: true
+            type: BookGridType.Songs
         }
     },
     {
@@ -66,6 +84,10 @@ const routes: RouteRecordRaw[] = [
             book: getBookFromNumber(params.book)
         })
     },
+    {
+        path: '/:pathMatch(.*)*',
+        component: PageNotFoundVue,
+    }
 
 ];
 if(!window.location.href.endsWith("/")) {

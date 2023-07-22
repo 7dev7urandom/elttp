@@ -22,4 +22,12 @@ export type Book = {
     lessons: Lesson[];
     songs?: Song[];
 }
-export type YoutubeData = Book[];
+export type YoutubeData = {
+    bookAudioPlaylists: Book[];
+    supplementVocabPlaylists: Book[];
+};
+export enum BookGridType {
+    TextbookAudio,
+    Songs,
+    VocabSupplement
+}

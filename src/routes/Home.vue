@@ -7,14 +7,17 @@
 </template>
 <script setup lang="ts">
 import StandardGrid from '../components/cardgrid/StandardGrid.vue';
-import { mdiBookPlus, mdiMusic } from '@mdi/js';
+import { mdiBookPlus, mdiMusic, mdiPencil, mdiVolumeHigh, mdiWaveform } from '@mdi/js';
 // @ts-ignore
 import SvgIcon from '@jamescoyle/vue-icon';
 import { useRouter } from 'vue-router';
 
 const routes: { title: string, icon: string, path: string }[] = [];
-routes.push({ title: "Vocabulary Supplement", icon: mdiBookPlus, path: "/vocab-supplement" });
+routes.push({ title: "Supplement Lesson Plans", icon: mdiBookPlus, path: "/lesson-plans"});
+// routes.push({ title: "Vocabulary supplement", icon: mdiWaveform, path: "/vocabulary-supplement"});
+// routes.push({ title: "Manipulatives", icon: mdiPencil, path: "/manipulatives"});
 routes.push({ title: "Songs", icon: mdiMusic, path: "/songs" });
+routes.push({ title: "Audio for textbooks", icon: mdiVolumeHigh, path: "/textbook-audio" });
 const router = useRouter();
 function open(item: {path: string}) {
     router.push(item.path + "/");

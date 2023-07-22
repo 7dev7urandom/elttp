@@ -8,8 +8,18 @@ const routes = computed<string[]>(() => {
         return [];
     }
     switch(router.currentRoute.value.fullPath.split('/')[1]) {
-        case 'vocab-supplement':
-            const vocab = ['Vocabulary Supplement'];
+        case 'lesson-plans':
+            return ["Lesson Plans"];
+        case 'vocabulary-supplement':
+            return ["Vocabulary Supplement"];
+        case 'songs':
+            const songs = ['Songs'];
+            if(router.currentRoute.value.params.book) {
+                songs.push(`Book ${router.currentRoute.value.params.book}`);
+            }
+            return songs;
+        case 'textbook-audio':
+            const vocab = ['Textbook Audio'];
             if(router.currentRoute.value.params.book) {
                 vocab.push(`Book ${router.currentRoute.value.params.book}`);
             } else return vocab;
@@ -20,16 +30,10 @@ const routes = computed<string[]>(() => {
                 vocab.push(`Lesson ${router.currentRoute.value.params.lesson}`);
             } else return vocab;
             return vocab;
-        case 'songs':
-            const songs = ['Songs'];
-            if(router.currentRoute.value.params.book) {
-                songs.push(`Book ${router.currentRoute.value.params.book}`);
-            }
-            return songs;
         case 'books':
             return ['Books'];
         default:
-            return [];
+            return ["Not Found"];
     }
 });
 function goToPart(part: number) {
