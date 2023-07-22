@@ -1,6 +1,10 @@
 <template>
-    <div class="card" @click="$emit('select')">
-        <div class="card_content">
+    <div class="card" @click="$emit('select')" :style="{
+        padding: noMargin ? undefined : '0.5em'
+    }">
+        <div class="card_content" :style="{
+            flexDirection: horizontal ? undefined : 'column'
+        }">
             <slot>
                 <h3 class="card_title">{{ title }}</h3>
             </slot>
@@ -10,7 +14,7 @@
 
 <script setup lang="ts">
 
-const props = defineProps<{ title?: string }>();
+const props = defineProps<{ title?: string, horizontal?: boolean, noMargin?: boolean }>();
 
 </script>
 <style scoped>
@@ -21,7 +25,7 @@ const props = defineProps<{ title?: string }>();
     justify-content: center;
     width: 100%;
     height: 100%;
-    padding: .5em;
+    /* padding: .5em; */
     border-radius: 0.5em;
     background-color: var(--card-color);
     box-shadow: 0 0 0.5em #00000033;
@@ -43,7 +47,6 @@ const props = defineProps<{ title?: string }>();
 }
 .card_content {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
