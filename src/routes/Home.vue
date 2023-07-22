@@ -14,7 +14,7 @@ import { useRouter } from 'vue-router';
 
 const routes: { title: string, icon: string, path: string }[] = [];
 routes.push({ title: "Supplement Lesson Plans", icon: mdiBookPlus, path: "/lesson-plans"});
-// routes.push({ title: "Vocabulary supplement", icon: mdiWaveform, path: "/vocabulary-supplement"});
+routes.push({ title: "Vocabulary supplement", icon: mdiWaveform, path: "/vocabulary-supplement"});
 // routes.push({ title: "Manipulatives", icon: mdiPencil, path: "/manipulatives"});
 routes.push({ title: "Songs", icon: mdiMusic, path: "/songs" });
 routes.push({ title: "Audio for textbooks", icon: mdiVolumeHigh, path: "/textbook-audio" });

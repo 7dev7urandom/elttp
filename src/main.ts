@@ -7,14 +7,17 @@ import BookGridVue from './components/BookGrid.vue'
 import UnitGridVue from './components/textbook-audio/UnitGrid.vue'
 import LessonGridVue from './components/textbook-audio/LessonGrid.vue'
 import ChapterGridVue from './components/textbook-audio/ChapterGrid.vue'
+import VocabularyUnitGridVue from './components/vocabulary-supplement/UnitGrid.vue'
+import VocabularyLessonGridVue from './components/vocabulary-supplement/LessonGrid.vue'
 import SongGridVue from './components/songs/SongGrid.vue'
 import SupplementPdfGridVue from './components/lesson-plans/SupplementPdfGrid.vue'
 import PageNotFoundVue from './components/PageNotFound.vue'
 import youtubeData from './data.json';
 import { BookGridType } from './types'
 
-function getBookFromNumber(bookNumber: any) {
-    return youtubeData.bookAudioPlaylists.find((b) => b.playlistTitle.includes("Book " + bookNumber + " -")) ?? youtubeData.bookAudioPlaylists.find((b) => b.playlistTitle.includes("2nd Edition"))!;
+function getBookFromNumber(bookNumber: any, bookAudio = true) {
+    return bookAudio ? youtubeData.bookAudioPlaylists.find((b) => b.playlistTitle.includes("Book " + bookNumber + " -")) ?? youtubeData.bookAudioPlaylists.find((b) => b.playlistTitle.includes("2nd Edition"))!
+        : youtubeData.supplementVocabPlaylists.find((b) => b.playlistTitle.includes("Book " + bookNumber + " -")) ?? youtubeData.supplementVocabPlaylists.find((b) => b.playlistTitle.includes("2nd Edition"))!;
 }
 
 const routes: RouteRecordRaw[] = [
@@ -59,17 +62,32 @@ const routes: RouteRecordRaw[] = [
         })
     },
     {
-        path: '/lesson-plans',
-        component: SupplementPdfGridVue
-    },
-    // '/lesson-plans/:book' handled automatically by public folder
-    {
         path: '/vocabulary-supplement',
         component: BookGridVue,
         props: {
             type: BookGridType.VocabSupplement
         }
     },
+    {
+        path: '/vocabulary-supplement/:book',
+        component: VocabularyUnitGridVue,
+        props: ({ params }) => ({
+            book: getBookFromNumber(params.book, false)
+        })
+    },
+    {
+        path: '/vocabulary-supplement/:book/:unit',
+        component: VocabularyLessonGridVue,
+        props: ({ params }) => ({
+            book: getBookFromNumber(params.book, false),
+            unit: params.unit
+        })
+    },
+    {
+        path: '/lesson-plans',
+        component: SupplementPdfGridVue
+    },
+    // '/lesson-plans/:book' handled automatically by public folder
     {
         path: '/songs',
         component: BookGridVue,

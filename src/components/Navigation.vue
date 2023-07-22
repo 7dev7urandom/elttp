@@ -11,7 +11,14 @@ const routes = computed<string[]>(() => {
         case 'lesson-plans':
             return ["Lesson Plans"];
         case 'vocabulary-supplement':
-            return ["Vocabulary Supplement"];
+            const vocabSupplement = ["Vocabulary Supplement"];
+            if(router.currentRoute.value.params.book) {
+                vocabSupplement.push(`Book ${router.currentRoute.value.params.book}`);
+            } else return vocabSupplement;
+            if(router.currentRoute.value.params.unit) {
+                vocabSupplement.push(`Unit ${router.currentRoute.value.params.unit}`);
+            } else return vocabSupplement;
+            return vocabSupplement;
         case 'songs':
             const songs = ['Songs'];
             if(router.currentRoute.value.params.book) {
