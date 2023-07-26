@@ -7,7 +7,7 @@ export type Lesson = {
     unitNumber?: number;
     lessonNumber?: number;
     videoId: string;
-    chapters: Chapter[];
+    chapters?: Chapter[];
     title?: string;
 }
 export type Song = {
@@ -25,6 +25,11 @@ export type Book = {
 export type YoutubeData = {
     bookAudioPlaylists: Book[];
     supplementVocabPlaylists: Book[];
+    phonicsPlaylist: SimpleVideo[];
+};
+export type SimpleVideo = {
+    videoId: string;
+    title: string;
 };
 export enum BookGridType {
     TextbookAudio,

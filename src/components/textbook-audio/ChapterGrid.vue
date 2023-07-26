@@ -15,7 +15,7 @@ const lesson = computed(() => {
     }
 });
 const items = computed(() =>
-    lesson.value!.chapters
+    lesson.value!.chapters ?? []
             // .map(c => ({ ...c }))
 );
 if(items.value.length === 0) {
