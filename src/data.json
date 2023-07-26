@@ -6174,6 +6174,48 @@
           "lessonNumber": 3,
           "videoId": "RELX95PsuZk",
           "title": "Since and For"
+        },
+        {
+          "bookNumber": 3,
+          "unitNumber": 5,
+          "lessonNumber": 1,
+          "videoId": "0iUema_PMls",
+          "title": "I'd Love To"
+        },
+        {
+          "bookNumber": 3,
+          "unitNumber": 5,
+          "lessonNumber": 2,
+          "videoId": "slDL3snYJ4I",
+          "title": "Would You Like"
+        },
+        {
+          "bookNumber": 3,
+          "unitNumber": 5,
+          "lessonNumber": 3,
+          "videoId": "Iy-v9XHJ9Qo",
+          "title": "A New Baby"
+        },
+        {
+          "bookNumber": 3,
+          "unitNumber": 6,
+          "lessonNumber": 1,
+          "videoId": "EP5l2ysqWmo",
+          "title": "What Happened to Your Brother"
+        },
+        {
+          "bookNumber": 3,
+          "unitNumber": 6,
+          "lessonNumber": 2,
+          "videoId": "pPyBJRONQ4w",
+          "title": "At the Hospital"
+        },
+        {
+          "bookNumber": 3,
+          "unitNumber": 6,
+          "lessonNumber": 3,
+          "videoId": "oFQt7gRp60A",
+          "title": "I was Walking Along the Road"
         }
       ]
     },
@@ -6623,5 +6665,6 @@
         }
       ]
     }
-  ]
+  ],
+  "phonicsPlaylist": []
 }
