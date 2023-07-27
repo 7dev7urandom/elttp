@@ -25,7 +25,11 @@ export type Book = {
 export type YoutubeData = {
     bookAudioPlaylists: Book[];
     supplementVocabPlaylists: Book[];
-    phonicsPlaylist: SimpleVideo[];
+    phonicsPlaylist: {
+        videos: SimpleVideo[];
+        playlistId: string;
+        playlistName: string;
+    }
 };
 export type SimpleVideo = {
     videoId: string;

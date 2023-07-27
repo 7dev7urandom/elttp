@@ -1,20 +1,22 @@
-import { createApp } from 'vue'
-import './style.css'
-import { RouteRecordRaw, createRouter, createWebHistory } from 'vue-router'
-import App from './App.vue'
-import HomeVue from './routes/Home.vue'
-import BookGridVue from './components/BookGrid.vue'
-import UnitGridVue from './components/textbook-audio/UnitGrid.vue'
-import LessonGridVue from './components/textbook-audio/LessonGrid.vue'
-import ChapterGridVue from './components/textbook-audio/ChapterGrid.vue'
-import VocabularyUnitGridVue from './components/vocabulary-supplement/UnitGrid.vue'
-import VocabularyLessonGridVue from './components/vocabulary-supplement/LessonGrid.vue'
-import SongGridVue from './components/songs/SongGrid.vue'
-import SupplementPdfGridVue from './components/lesson-plans/SupplementPdfGrid.vue'
-import MobilePdfViewerVue from './components/lesson-plans/MobilePdfViewer.vue'
-import PageNotFoundVue from './components/PageNotFound.vue'
+import { createApp } from 'vue';
+import './style.css';
+import { RouteRecordRaw, createRouter, createWebHistory } from 'vue-router';
+import App from './App.vue';
+import HomeVue from './routes/Home.vue';
+import BookGridVue from './components/BookGrid.vue';
+import UnitGridVue from './components/textbook-audio/UnitGrid.vue';
+import LessonGridVue from './components/textbook-audio/LessonGrid.vue';
+import ChapterGridVue from './components/textbook-audio/ChapterGrid.vue';
+import VocabularyUnitGridVue from './components/vocabulary-supplement/UnitGrid.vue';
+import VocabularyLessonGridVue from './components/vocabulary-supplement/LessonGrid.vue';
+import SongGridVue from './components/songs/SongGrid.vue';
+import SupplementPdfGridVue from './components/lesson-plans/SupplementPdfGrid.vue';
+import MobilePdfViewerVue from './components/lesson-plans/MobilePdfViewer.vue';
+import PageNotFoundVue from './components/PageNotFound.vue';
 import youtubeData from './data.json';
-import { BookGridType } from './types'
+import { BookGridType } from './types';
+import PhonicsGridVue from './components/phonics/PhonicsGrid.vue';
+import ManipulativesGridVue from './components/manipulatives/ManipulativesGrid.vue';
 
 function getBookFromNumber(bookNumber: any, bookAudio = true) {
     return bookAudio ? youtubeData.bookAudioPlaylists.find((b) => b.playlistTitle.includes("Book " + bookNumber + " -")) ?? youtubeData.bookAudioPlaylists.find((b) => b.playlistTitle.includes("2nd Edition"))!
@@ -93,6 +95,14 @@ const routes: RouteRecordRaw[] = [
         path: '/lesson-plans/mobile-viewer/:pdfName?',
         component: MobilePdfViewerVue,
         props: true
+    },
+    {
+        path: '/phonics',
+        component: PhonicsGridVue
+    },
+    {
+        path: '/manipulatives',
+        component: ManipulativesGridVue
     },
     {
         path: '/songs',

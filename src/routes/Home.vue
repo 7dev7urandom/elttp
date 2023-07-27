@@ -7,15 +7,16 @@
 </template>
 <script setup lang="ts">
 import StandardGrid from '../components/cardgrid/StandardGrid.vue';
-import { mdiBookPlus, mdiMusic, mdiPencil, mdiVolumeHigh, mdiWaveform } from '@mdi/js';
+import { mdiAlphabetical, mdiBookPlus, mdiDraw, mdiMusic, mdiPencil, mdiVolumeHigh, mdiWaveform } from '@mdi/js';
 // @ts-ignore
 import SvgIcon from '@jamescoyle/vue-icon';
 import { useRouter } from 'vue-router';
 
 const routes: { title: string, icon: string, path: string }[] = [];
-routes.push({ title: "Supplement Lesson Plans", icon: mdiBookPlus, path: "/lesson-plans"});
-routes.push({ title: "Vocabulary Supplement", icon: mdiWaveform, path: "/vocabulary-supplement"});
-// routes.push({ title: "Manipulatives", icon: mdiPencil, path: "/manipulatives"});
+routes.push({ title: "Supplement Lesson Plans", icon: mdiBookPlus, path: "/lesson-plans" });
+routes.push({ title: "Vocabulary Supplement", icon: mdiWaveform, path: "/vocabulary-supplement" });
+routes.push({ title: "Manipulatives", icon: mdiDraw, path: "/manipulatives" });
+routes.push({ title: "Phonics", icon: mdiAlphabetical, path: "/phonics" })
 routes.push({ title: "Songs", icon: mdiMusic, path: "/songs" });
 routes.push({ title: "Audio for Textbooks", icon: mdiVolumeHigh, path: "/textbook-audio" });
 const router = useRouter();

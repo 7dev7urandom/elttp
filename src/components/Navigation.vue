@@ -10,6 +10,10 @@ const routes = computed<string[]>(() => {
     switch(router.currentRoute.value.fullPath.split('/')[1]) {
         case 'lesson-plans':
             return ["Lesson Plans"];
+        case 'phonics':
+            return ["Phonics"];
+        case 'manipulatives':
+            return ["Manipulatives"];
         case 'vocabulary-supplement':
             const vocabSupplement = ["Vocabulary Supplement"];
             if(router.currentRoute.value.params.book) {

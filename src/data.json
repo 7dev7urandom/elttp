@@ -6757,14 +6757,18 @@
       ]
     }
   ],
-  "phonicsPlaylist": [
-    {
-      "videoId": "UExpeVJrUTNEbjdWdDNzc0Z3Qk56cHNiYmk3dkh6MDlfLS41NkI0NEY2RDEwNTU3Q0M2",
-      "title": "Short Vowel Sounds"
-    },
-    {
-      "videoId": "UExpeVJrUTNEbjdWdDNzc0Z3Qk56cHNiYmk3dkh6MDlfLS4yODlGNEE0NkRGMEEzMEQy",
-      "title": "Consonant Sounds"
-    }
-  ]
+  "phonicsPlaylist": {
+    "videos": [
+      {
+        "videoId": "1SgtZZvljVg",
+        "title": "Short Vowel Sounds"
+      },
+      {
+        "videoId": "ikXq9-mQsjU",
+        "title": "Consonant Sounds"
+      }
+    ],
+    "playlistId": "PLiyRkQ3Dn7Vt3ssFwBNzpsbbi7vHz09_-",
+    "playlistName": "Phonics"
+  }
 }
