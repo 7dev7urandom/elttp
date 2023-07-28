@@ -11,7 +11,7 @@ import VocabularyUnitGridVue from './components/vocabulary-supplement/UnitGrid.v
 import VocabularyLessonGridVue from './components/vocabulary-supplement/LessonGrid.vue';
 import SongGridVue from './components/songs/SongGrid.vue';
 import SupplementPdfGridVue from './components/lesson-plans/SupplementPdfGrid.vue';
-import MobilePdfViewerVue from './components/lesson-plans/MobilePdfViewer.vue';
+import MobilePdfViewerVue from './components/MobilePdfViewer.vue';
 import PageNotFoundVue from './components/PageNotFound.vue';
 import youtubeData from './data.json';
 import { BookGridType } from './types';
@@ -92,7 +92,7 @@ const routes: RouteRecordRaw[] = [
     },
     // '/lesson-plans/:book' handled automatically by public folder
     {
-        path: '/lesson-plans/mobile-viewer/:pdfName?',
+        path: '/mobile-viewer/:pdfPath*',
         component: MobilePdfViewerVue,
         props: true
     },

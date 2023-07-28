@@ -1,11 +1,15 @@
 <script setup lang="ts" generic="T extends { title: string }">
+import { useSlots } from 'vue';
 import StandardCard from './StandardCard.vue';
 
 interface GenericItemEvents<T extends { title: string }> {
-  (event: 'select', item: T): void
+  (event: "select", item: T): void;
+  (event: "selectMobile", item: T): void;
+  (event: "download", item: T): void;
 }
 interface GenericItemProps<T extends { title: string }> {
-  items: T[], horizontal?: boolean, noMargin?: boolean
+  items: T[];
+  downloadButtonOnMobile?: boolean | ((item: T) => boolean);
 }
 const props = defineProps<GenericItemProps<T>>();
 defineEmits<GenericItemEvents<T>>();
@@ -16,6 +20,7 @@ function animDur(index: number, total: number) {
         animationDelay: `${index / total * TIME}ms`,
     };
 }
+console.log("GRID", useSlots());
 
 </script>
 
@@ -29,11 +34,19 @@ function animDur(index: number, total: number) {
     >
       <StandardCard
         :title="item.title"
-        :horizontal="horizontal"
-        :no-margin="noMargin"
+        :download-button-on-mobile="typeof downloadButtonOnMobile === 'function' ? downloadButtonOnMobile(item) : downloadButtonOnMobile"
         @select="$emit('select', item)"
+        @download="$emit('download', item)"
+        @select-mobile="$emit('selectMobile', item)"
       >
-        <slot :item="item" />
+        <template
+          v-if="$slots.default"
+          #insidecard
+        >
+          <slot
+            :item="item"
+          />
+        </template>
       </StandardCard>
     </div>
   </div>

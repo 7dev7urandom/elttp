@@ -61,7 +61,7 @@ type X = Book & { title: string };
 @media (max-width: 650px) {
     .grid {
         grid-template-columns: repeat(2, calc(50% - .5em)) !important;
-        grid-gap: 3em 1em !important;
+        grid-gap: 2em 1em !important;
     }
 }
 .grid_item {
