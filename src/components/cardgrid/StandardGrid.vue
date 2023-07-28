@@ -1,6 +1,14 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends { title: string }">
 import StandardCard from './StandardCard.vue';
-const props = defineProps<{ items: any[], horizontal?: boolean, noMargin?: boolean }>();
+
+interface GenericItemEvents<T extends { title: string }> {
+  (event: 'select', item: T): void
+}
+interface GenericItemProps<T extends { title: string }> {
+  items: T[], horizontal?: boolean, noMargin?: boolean
+}
+const props = defineProps<GenericItemProps<T>>();
+defineEmits<GenericItemEvents<T>>();
 
 function animDur(index: number, total: number) {
     const TIME = 300;
@@ -12,13 +20,23 @@ function animDur(index: number, total: number) {
 </script>
 
 <template>
-    <div class="grid">
-        <div class="grid_item" v-for="(item, index) in props.items" :key="index" :style="animDur(index, props.items.length)">
-            <StandardCard :title="item.title" @select="$emit('select', item)" :horizontal="horizontal" :noMargin="noMargin">
-                <slot :item="item"></slot>
-            </StandardCard>
-        </div>
+  <div class="grid">
+    <div
+      v-for="(item, index) in props.items"
+      :key="index"
+      class="grid_item"
+      :style="animDur(index, props.items.length)"
+    >
+      <StandardCard
+        :title="item.title"
+        :horizontal="horizontal"
+        :no-margin="noMargin"
+        @select="$emit('select', item)"
+      >
+        <slot :item="item" />
+      </StandardCard>
     </div>
+  </div>
 </template>
 
 <style scoped>

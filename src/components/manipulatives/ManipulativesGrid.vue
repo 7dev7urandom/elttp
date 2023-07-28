@@ -1,7 +1,8 @@
 <template>
-    <StandardGrid :items="items" @select="itemClicked">
-
-    </StandardGrid>
+  <StandardGrid
+    :items="items"
+    @select="itemClicked"
+  />
 </template>
 <script setup lang="ts">
 import StandardGrid from '../cardgrid/StandardGrid.vue';

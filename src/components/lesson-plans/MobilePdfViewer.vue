@@ -1,5 +1,9 @@
 <template>
-    <iframe id="pdfViewer" :src="frameSource" sandbox="allow-scripts allow-same-origin"></iframe>
+  <iframe
+    id="pdfViewer"
+    :src="frameSource"
+    sandbox="allow-scripts allow-same-origin"
+  />
 </template>
 <script setup lang="ts">
 import { computed } from 'vue';

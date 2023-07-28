@@ -1,21 +1,32 @@
 <template>
-    <div class="card" @click="$emit('select')" :style="{
-        padding: noMargin ? undefined : '0.5em'
-    }">
-        <div class="card_content" :style="{
-            flexDirection: horizontal ? undefined : 'column'
-        }">
-            <slot>
-                <h3 class="card_title">{{ title }}</h3>
-            </slot>
-        </div>
+  <div
+    class="card"
+    :style="{
+      padding: noMargin ? undefined : '0.5em'
+    }"
+    @click="$emit('select')"
+  >
+    <div
+      class="card_content"
+      :style="{
+        flexDirection: horizontal ? undefined : 'column'
+      }"
+    >
+      <slot>
+        <h3 class="card_title">
+          {{ title }}
+        </h3>
+      </slot>
     </div>
+  </div>
 </template>
 
 <script setup lang="ts">
 
 const props = defineProps<{ title?: string, horizontal?: boolean, noMargin?: boolean }>();
-
+defineEmits<{
+  (event: 'select'): void
+}>();
 </script>
 <style scoped>
 .card {

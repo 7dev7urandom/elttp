@@ -27,5 +27,8 @@ const items = computed(() => {
 </script>
 
 <template>
-    <StandardGrid :items="items" @select="(item: any) => $router.push(`${item.unit ?? 'other/' + props.book.lessons.find(l => l.title === item.title)?.videoId}/`)" />
+  <StandardGrid
+    :items="items"
+    @select="(item: any) => $router.push(`${item.unit ?? 'other/' + props.book.lessons.find(l => l.title === item.title)?.videoId}/`)"
+  />
 </template>

@@ -22,16 +22,25 @@ function getBookCover(book: Book) {
     const cover = `/bookCovers/M${book.playlistTitle.match(regex)![1]}.jpg`;
     return cover;
 }
-
+type X = Book & { title: string };
 </script>
 
 <template>
-    <StandardGrid :items="songItems" v-slot="{ item }" @select="(book) => $router.push(bookId(book.playlistId) + '/')">
-        <img :src="getBookCover(item as any)" alt="Book cover" />
-        <div class="book-card_content">
-            <h3 class="book-card_title">{{ (item as any).playlistTitle.split(" - ")[0] }}</h3>
-        </div>
-    </StandardGrid>
+  <StandardGrid
+    v-slot="{ item }"
+    :items="songItems as unknown as X[]"
+    @select="(book) => $router.push(bookId(book.playlistId) + '/')"
+  >
+    <img
+      :src="getBookCover(item as any)"
+      alt="Book cover"
+    >
+    <div class="book-card_content">
+      <h3 class="book-card_title">
+        {{ (item as any).playlistTitle.split(" - ")[0] }}
+      </h3>
+    </div>
+  </StandardGrid>
 </template>
 <style scoped>
 .card {

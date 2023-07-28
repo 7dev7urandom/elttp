@@ -1,9 +1,19 @@
 <template>
-    <StandardGrid :items="routes" v-slot="{ item }" @select="open">
-        <!-- Include title and icon -->
-        <svg-icon :path="(item as any).icon" type="mdi" size="128" />
-        <h3 class="book-card_title">{{ item.title }}</h3>
-    </StandardGrid>
+  <StandardGrid
+    v-slot="{ item }"
+    :items="routes"
+    @select="open"
+  >
+    <!-- Include title and icon -->
+    <svg-icon
+      :path="(item as any).icon"
+      type="mdi"
+      size="128"
+    />
+    <h3 class="book-card_title">
+      {{ item.title }}
+    </h3>
+  </StandardGrid>
 </template>
 <script setup lang="ts">
 import StandardGrid from '../components/cardgrid/StandardGrid.vue';
@@ -16,7 +26,7 @@ const routes: { title: string, icon: string, path: string }[] = [];
 routes.push({ title: "Supplement Lesson Plans", icon: mdiBookPlus, path: "/lesson-plans" });
 routes.push({ title: "Vocabulary Supplement", icon: mdiWaveform, path: "/vocabulary-supplement" });
 routes.push({ title: "Manipulatives", icon: mdiDraw, path: "/manipulatives" });
-routes.push({ title: "Phonics", icon: mdiAlphabetical, path: "/phonics" })
+routes.push({ title: "Phonics", icon: mdiAlphabetical, path: "/phonics" });
 routes.push({ title: "Songs", icon: mdiMusic, path: "/songs" });
 routes.push({ title: "Audio for Textbooks", icon: mdiVolumeHigh, path: "/textbook-audio" });
 const router = useRouter();

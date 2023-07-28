@@ -1,12 +1,33 @@
 <template>
-    <StandardGrid :items="pdfFiles" v-slot="{ item }" :horizontal="true" :noMargin="true" @select="clickFull">
-        <h3 class="card_title" @click="loadPdf(item)">{{ item.title }}</h3>
-        <div id="divider" v-if="isMobile()"></div>
-        <svg-icon :path="mdiDownload" type="mdi" size="32" class="downloadicon" v-if="isMobile()" @click="download(item)"></svg-icon>
-    </StandardGrid>
+  <StandardGrid
+    v-slot="{ item }"
+    :items="pdfFiles"
+    :horizontal="true"
+    :no-margin="true"
+    @select="clickFull"
+  >
+    <h3
+      class="card_title"
+      @click="loadPdf(item)"
+    >
+      {{ item.title }}
+    </h3>
+    <div
+      v-if="isMobile()"
+      id="divider"
+    />
+    <svg-icon
+      v-if="isMobile()"
+      :path="mdiDownload"
+      type="mdi"
+      size="32"
+      class="downloadicon"
+      @click="download(item)"
+    />
+  </StandardGrid>
 </template>
 <script setup lang="ts">
-import StandardGrid from '../cardgrid/StandardGrid.vue'
+import StandardGrid from '../cardgrid/StandardGrid.vue';
 import { useRouter } from 'vue-router';
 // @ts-ignore
 import SvgIcon from '@jamescoyle/vue-icon';

@@ -14,5 +14,8 @@ function openSong(song: any) {
 }
 </script>
 <template>
-    <StandardGrid :items="items" @select="(s: any) => openSong(s)" />
+  <StandardGrid
+    :items="items"
+    @select="(s: any) => openSong(s)"
+  />
 </template>

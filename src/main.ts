@@ -2,7 +2,7 @@ import { createApp } from 'vue';
 import './style.css';
 import { RouteRecordRaw, createRouter, createWebHistory } from 'vue-router';
 import App from './App.vue';
-import HomeVue from './routes/Home.vue';
+import HomeVue from './routes/HomePage.vue';
 import BookGridVue from './components/BookGrid.vue';
 import UnitGridVue from './components/textbook-audio/UnitGrid.vue';
 import LessonGridVue from './components/textbook-audio/LessonGrid.vue';
@@ -131,7 +131,7 @@ if(!window.location.href.endsWith("/")) {
 const router = createRouter({
     history: createWebHistory(),
     routes,
-})
+});
 
 
-createApp(App).use(router).mount('#app')
+createApp(App).use(router).mount('#app');

@@ -52,12 +52,17 @@ function goToPart(part: number) {
 }
 </script>
 <template>
-    <div>
-        <span @click="goToPart(0)">Home</span>
-        <span class="arrow" v-for="(r, index) in routes" @click="goToPart(index + 1)">
-            <span>{{ r }}</span>
-        </span>
-    </div>
+  <div>
+    <span @click="goToPart(0)">Home</span>
+    <span
+      v-for="(r, index) in routes"
+      :key="index"
+      class="arrow"
+      @click="goToPart(index + 1)"
+    >
+      <span>{{ r }}</span>
+    </span>
+  </div>
 </template>
 <style scoped>
 span.arrow::before {

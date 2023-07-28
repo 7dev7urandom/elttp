@@ -1,5 +1,8 @@
 <template>
-    <StandardGrid :items="items" @select="(l: any) => $router.push(`${l.lessonNumber}/`)" />
+  <StandardGrid
+    :items="items"
+    @select="(l: any) => $router.push(`${l.lessonNumber}/`)"
+  />
 </template>
 <script setup lang="ts">
 import StandardGrid from '../cardgrid/StandardGrid.vue';

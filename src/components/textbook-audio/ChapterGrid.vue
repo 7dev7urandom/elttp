@@ -1,5 +1,8 @@
 <template>
-    <StandardGrid :items="items" @select="(c: any) => loadVideo(c)" />
+  <StandardGrid
+    :items="items"
+    @select="(c: any) => loadVideo(c)"
+  />
 </template>
 <script setup lang="ts">
 import StandardGrid from '../cardgrid/StandardGrid.vue';
