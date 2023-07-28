@@ -1,5 +1,4 @@
 <script setup lang="ts" generic="T extends { title: string }">
-import { useSlots } from 'vue';
 import StandardCard from './StandardCard.vue';
 
 interface GenericItemEvents<T extends { title: string }> {
@@ -20,12 +19,14 @@ function animDur(index: number, total: number) {
         animationDelay: `${index / total * TIME}ms`,
     };
 }
-console.log("GRID", useSlots());
 
 </script>
 
 <template>
-  <div class="grid">
+  <div
+    class="grid"
+    :style="{ rowGap: $slots.default ? '2em' : '1em' }"
+  >
     <div
       v-for="(item, index) in props.items"
       :key="index"
@@ -57,7 +58,7 @@ console.log("GRID", useSlots());
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     grid-template-rows: repeat(auto-fill, minmax(0, 1fr));
-    grid-gap: 2em 1.5em;
+    gap: 2em 1em;
     padding: 1em;
 }
 .grid_item {

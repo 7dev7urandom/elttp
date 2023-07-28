@@ -17,7 +17,7 @@
 </template>
 <script setup lang="ts">
 import StandardGrid from '../components/cardgrid/StandardGrid.vue';
-import { mdiAlphabetical, mdiBookPlus, mdiDraw, mdiMusic, mdiPencil, mdiVolumeHigh, mdiWaveform } from '@mdi/js';
+import { mdiAlphabetical, mdiBookPlus, mdiDraw, mdiMusic, mdiVolumeHigh, mdiWaveform } from '@mdi/js';
 // @ts-ignore
 import SvgIcon from '@jamescoyle/vue-icon';
 import { useRouter } from 'vue-router';

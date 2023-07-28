@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import StandardGrid from '../cardgrid/StandardGrid.vue';
 import { computed } from 'vue';
-import { Book, BookGridType, Lesson } from '../../types';
+import { Book, Lesson } from '../../types';
 
 const props = defineProps<{ book: Book, unit: string }>();
 

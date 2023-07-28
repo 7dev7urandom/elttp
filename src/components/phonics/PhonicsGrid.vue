@@ -12,10 +12,6 @@ import StandardGrid from '../cardgrid/StandardGrid.vue';
 import jsonData from '../../data.json';
 import { YoutubeData } from '../../types';
 import { useRouter } from 'vue-router';
-import { isMobile } from '../../util';
-// @ts-ignore
-import SvgIcon from '@jamescoyle/vue-icon';
-import { mdiDownload } from '@mdi/js';
 
 const wordDocs = ["Phonemes Cards", "Scope and Sequence"].map(n => ({ type: "doc", link: n, title: "Doc: " + n }));
 const videos = (jsonData as YoutubeData).phonicsPlaylist.videos.map(video => ({ type: "video", link: video.videoId, title: video.title }));

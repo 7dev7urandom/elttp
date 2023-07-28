@@ -41,13 +41,12 @@ import { isMobile } from "../../util";
 // @ts-ignore
 import SvgIcon from '@jamescoyle/vue-icon';
 import { mdiDownload } from '@mdi/js';
-import { useSlots } from "vue";
 
-const props = defineProps<{
+defineProps<{
   title?: string;
   downloadButtonOnMobile?: boolean;
 }>();
-console.log(useSlots());
+
 defineEmits<{
   (event: "select"): void;
   (event: "selectMobile"): void;
@@ -113,5 +112,4 @@ h3 {
     float: left;
     width: 80%;
 }
-
 </style>
