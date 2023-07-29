@@ -7,8 +7,8 @@ import BookGridVue from './components/BookGrid.vue';
 import UnitGridVue from './components/textbook-audio/UnitGrid.vue';
 import LessonGridVue from './components/textbook-audio/LessonGrid.vue';
 import ChapterGridVue from './components/textbook-audio/ChapterGrid.vue';
-import VocabularyUnitGridVue from './components/vocabulary-supplement/UnitGrid.vue';
-import VocabularyLessonGridVue from './components/vocabulary-supplement/LessonGrid.vue';
+import VocabularyUnitGridVue from './components/supplement-audio/UnitGrid.vue';
+import VocabularyLessonGridVue from './components/supplement-audio/LessonGrid.vue';
 import SongGridVue from './components/songs/SongGrid.vue';
 import SupplementPdfGridVue from './components/lesson-plans/SupplementPdfGrid.vue';
 import MobilePdfViewerVue from './components/MobilePdfViewer.vue';
@@ -65,21 +65,21 @@ const routes: RouteRecordRaw[] = [
         })
     },
     {
-        path: '/vocabulary-supplement',
+        path: '/supplement-audio',
         component: BookGridVue,
         props: {
             type: BookGridType.VocabSupplement
         }
     },
     {
-        path: '/vocabulary-supplement/:book',
+        path: '/supplement-audio/:book',
         component: VocabularyUnitGridVue,
         props: ({ params }) => ({
             book: getBookFromNumber(params.book, false)
         })
     },
     {
-        path: '/vocabulary-supplement/:book/:unit',
+        path: '/supplement-audio/:book/:unit',
         component: VocabularyLessonGridVue,
         props: ({ params }) => ({
             book: getBookFromNumber(params.book, false),

@@ -14,8 +14,8 @@ const routes = computed<string[]>(() => {
             return ["Phonics"];
         case 'manipulatives':
             return ["Manipulatives"];
-        case 'vocabulary-supplement':
-            const vocabSupplement = ["Vocabulary Supplement"];
+        case 'supplement-audio':
+            const vocabSupplement = ["Supplement Audio"];
             if(router.currentRoute.value.params.book) {
                 vocabSupplement.push(`Book ${router.currentRoute.value.params.book}`);
             } else return vocabSupplement;
