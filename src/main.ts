@@ -17,6 +17,7 @@ import youtubeData from './data.json';
 import { BookGridType } from './types';
 import PhonicsGridVue from './components/phonics/PhonicsGrid.vue';
 import ManipulativesGridVue from './components/manipulatives/ManipulativesGrid.vue';
+import MainGridVue from './components/manipulatives/MainGrid.vue';
 
 function getBookFromNumber(bookNumber: any, bookAudio = true) {
     return bookAudio ? youtubeData.bookAudioPlaylists.find((b) => b.playlistTitle.includes("Book " + bookNumber + " -")) ?? youtubeData.bookAudioPlaylists.find((b) => b.playlistTitle.includes("2nd Edition"))!
@@ -102,7 +103,15 @@ const routes: RouteRecordRaw[] = [
     },
     {
         path: '/manipulatives',
-        component: ManipulativesGridVue
+        component: MainGridVue
+    },
+    {
+        path: '/manipulatives/:book',
+        component: ManipulativesGridVue,
+        props: ({ params }) => ({
+            book: getBookFromNumber(params.book, false),
+            bookNum: params.book
+        })
     },
     {
         path: '/songs',

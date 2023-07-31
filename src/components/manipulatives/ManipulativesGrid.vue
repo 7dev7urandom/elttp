@@ -10,9 +10,12 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import StandardGrid from '../cardgrid/StandardGrid.vue';
+import { Book } from '../../types';
+import manipulativeFileMap from './data.json';
 
-const items = ["SE Asia Map", "M3U9L2 PICS What is this made of", "M3U1L2 PICS family", "M3U6L1 PICS While I was . . ."]
-  .map(n => ({ link: n, title: n }));
+const props = defineProps<{ book: Book, bookNum: keyof typeof manipulativeFileMap }>();
+
+const items = manipulativeFileMap[props.bookNum].map(f => ({ title: /U\dL\d/.test(f) ? f.replace(" ", "\n") : f, link: f }));
 
 const router = useRouter();
 

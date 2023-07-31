@@ -38,5 +38,6 @@ export type SimpleVideo = {
 export enum BookGridType {
     TextbookAudio,
     Songs,
-    VocabSupplement
+    VocabSupplement,
+    Manipulatives
 }

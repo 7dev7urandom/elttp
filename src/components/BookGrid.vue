@@ -3,13 +3,22 @@ import { Book, BookGridType, YoutubeData } from '../types';
 import StandardGrid from './cardgrid/StandardGrid.vue';
 import rawData from '../data.json';
 import { computed } from 'vue';
+import ManipulativesData from './manipulatives/data.json';
 
 const props = defineProps<{ type?: BookGridType }>();
 const data = props.type === BookGridType.VocabSupplement ? (rawData as YoutubeData).supplementVocabPlaylists : (rawData as YoutubeData).bookAudioPlaylists;
 
-const songItems = computed(() =>
-    data.filter(p => !(props.type === BookGridType.Songs) || (p.songs?.length ?? 0) > 0).sort((a, b) => a.playlistTitle.localeCompare(b.playlistTitle))
-);
+const bookItems = computed(() => {
+    if(props.type === BookGridType.Songs) {
+        return data.filter(p => (p.songs?.length ?? 0) > 0).sort((a, b) => a.playlistTitle.localeCompare(b.playlistTitle));
+    }
+    if(props.type === BookGridType.Manipulatives) {
+        // LOL terrible time complexity but only 7 books so it's fine
+        const includes = Object.keys(ManipulativesData).map(k => "Book " + k);
+        return data.filter(a => includes.findIndex(bookName => a.playlistTitle.includes(bookName)) >= 0);
+    }
+    return data;
+});
 
 function bookId(pId: string): string {
     const title = data.find(b => b.playlistId === pId)!.playlistTitle;
@@ -28,7 +37,7 @@ type X = Book & { title: string };
 <template>
   <StandardGrid
     v-slot="{ item }"
-    :items="songItems as unknown as X[]"
+    :items="bookItems as unknown as X[]"
     @select="(book) => $router.push(bookId(book.playlistId) + '/')"
   >
     <img
