@@ -6760,12 +6760,28 @@
   "phonicsPlaylist": {
     "videos": [
       {
-        "videoId": "1SgtZZvljVg",
+        "videoId": "O6BH1QwSxr0",
         "title": "Short Vowel Sounds"
       },
       {
-        "videoId": "ikXq9-mQsjU",
+        "videoId": "xC03Czp7uXw",
         "title": "Consonant Sounds"
+      },
+      {
+        "videoId": "b3yC3I5zir4",
+        "title": "Special Phonemes in Unit 2"
+      },
+      {
+        "videoId": "GHzcp0UIsmg",
+        "title": "R controlled Phonemes"
+      },
+      {
+        "videoId": "1xocszJrigw",
+        "title": "Long Vowel Phonemes"
+      },
+      {
+        "videoId": "P45HMPughYk",
+        "title": "All Vowel Sounds"
       }
     ],
     "playlistId": "PLiyRkQ3Dn7Vt3ssFwBNzpsbbi7vHz09_-",
