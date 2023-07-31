@@ -1,10 +1,14 @@
 <template>
   <StandardGrid
-    :items="items"
-    :download-button-on-mobile="(item) => item.type === 'doc'"
+    :items="wordDocs"
+    :download-button-on-mobile="true"
     @select="click"
     @select-mobile="clickMobile"
     @download="download"
+  />
+  <StandardGrid
+    :items="videos"
+    @select="click"
   />
 </template>
 <script setup lang="ts">
@@ -16,7 +20,7 @@ import { useRouter } from 'vue-router';
 const wordDocs = ["Phonemes Cards", "Scope and Sequence"].map(n => ({ type: "doc", link: n, title: "Doc: " + n }));
 const videos = (jsonData as YoutubeData).phonicsPlaylist.videos.map(video => ({ type: "video", link: video.videoId, title: video.title }));
 
-const items = [...wordDocs, ...videos];
+// const items = [...wordDocs, ...videos];
 const router = useRouter();
 
 function clickMobile(data: any) {
