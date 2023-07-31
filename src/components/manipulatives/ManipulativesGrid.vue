@@ -20,7 +20,7 @@ const items = manipulativeFileMap[props.bookNum].map(f => ({ title: /U\dL\d/.tes
 const router = useRouter();
 
 function clickMobile(data: any) {
-  router.push("/mobile-viewer/manipulatives/" + data.link);
+  router.push(`/mobile-viewer/manipulatives/${props.bookNum}/${data.link}`);
 }
 
 function itemClicked(data: any) {
