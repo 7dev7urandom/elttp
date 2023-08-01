@@ -6776,15 +6776,25 @@
         "title": "R controlled Phonemes"
       },
       {
-        "videoId": "1xocszJrigw",
-        "title": "Long Vowel Phonemes"
-      },
-      {
         "videoId": "P45HMPughYk",
         "title": "All Vowel Sounds"
+      },
+      {
+        "videoId": "1xocszJrigw",
+        "title": "Long Vowel Phonemes"
       }
     ],
     "playlistId": "PLiyRkQ3Dn7Vt3ssFwBNzpsbbi7vHz09_-",
     "playlistName": "Phonics"
+  },
+  "justForFunSongs": {
+    "videos": [
+      {
+        "videoId": "Hp7tlpY8fro",
+        "title": "Peel Banana"
+      }
+    ],
+    "playlistId": "PLiyRkQ3Dn7VsjYpQwE6_WGOmnFH7x8Wi-",
+    "playlistName": "Songs Just for Fun"
   }
 }
