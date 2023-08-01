@@ -10,6 +10,7 @@ const data = props.type === BookGridType.VocabSupplement ? (rawData as YoutubeDa
 
 const bookItems = computed(() => {
     if(props.type === BookGridType.Songs) {
+        // Add Just for Fun category
         return data.filter(p => (p.songs?.length ?? 0) > 0).sort((a, b) => a.playlistTitle.localeCompare(b.playlistTitle));
     }
     if(props.type === BookGridType.Manipulatives) {
@@ -35,6 +36,10 @@ type X = Book & { title: string };
 </script>
 
 <template>
+  <StandardGrid
+    :items="[{ title: 'Just for Fun!' }]"
+    @select="$router.push('jff/')"
+  />
   <StandardGrid
     v-slot="{ item }"
     :items="bookItems as unknown as X[]"

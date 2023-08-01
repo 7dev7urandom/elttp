@@ -20,6 +20,7 @@ import ManipulativesGridVue from './components/manipulatives/ManipulativesGrid.v
 import MainGridVue from './components/manipulatives/MainGrid.vue';
 
 function getBookFromNumber(bookNumber: any, bookAudio = true) {
+    if(Number.isNaN(parseFloat(bookNumber))) return null;
     return bookAudio ? youtubeData.bookAudioPlaylists.find((b) => b.playlistTitle.includes("Book " + bookNumber + " -")) ?? youtubeData.bookAudioPlaylists.find((b) => b.playlistTitle.includes("2nd Edition"))!
         : youtubeData.supplementVocabPlaylists.find((b) => b.playlistTitle.includes("Book " + bookNumber + " -")) ?? youtubeData.supplementVocabPlaylists.find((b) => b.playlistTitle.includes("2nd Edition"))!;
 }

@@ -28,7 +28,10 @@ const routes = computed<string[]>(() => {
         case 'songs':
             const songs = ['Songs'];
             if(router.currentRoute.value.params.book) {
-                songs.push(`Book ${router.currentRoute.value.params.book}`);
+                if(!Number.isNaN(parseFloat(router.currentRoute.value.params.book as string))) 
+                    songs.push(`Book ${router.currentRoute.value.params.book}`);
+                else
+                    songs.push("Just for Fun!");
             }
             return songs;
         case 'textbook-audio':
