@@ -37,6 +37,7 @@ type X = Book & { title: string };
 
 <template>
   <StandardGrid
+    v-if="type === BookGridType.Songs"
     :items="[{ title: 'Just for Fun!' }]"
     @select="$router.push('jff/')"
   />
