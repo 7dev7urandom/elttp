@@ -11,7 +11,16 @@ const routes = computed<string[]>(() => {
         case 'lesson-plans':
             return ["Lesson Plans"];
         case 'phonics':
-            return ["Phonics"];
+            const phon = ["Phonics"];
+            switch(router.currentRoute.value.fullPath.split('/')[2]) {
+                case 'documents':
+                    phon.push("Documents");
+                    break;
+                case 'videos':
+                    phon.push("Videos");
+                    break;
+            }
+            return phon;
         case 'manipulatives':
             const manip = ["Manipulatives"];
             if(router.currentRoute.value.params.book) manip.push("Book " + router.currentRoute.value.params.book);

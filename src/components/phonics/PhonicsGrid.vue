@@ -1,46 +1,29 @@
 <template>
   <StandardGrid
-    :items="wordDocs"
-    :download-button-on-mobile="true"
-    @select="click"
-    @select-mobile="clickMobile"
-    @download="download"
-  />
-  <StandardGrid
-    :items="videos"
-    @select="click"
-  />
+    v-slot="{ item }"
+    :items="phonics"
+    @select="it => $router.push(it.path + '/')"
+  >
+    <!-- Include title and icon -->
+    <svg-icon
+      :path="(item as any).icon"
+      type="mdi"
+      size="128"
+    />
+    <h3 class="book-card_title">
+      {{ item.title }}
+    </h3>
+  </StandardGrid>
 </template>
 <script setup lang="ts">
+// @ts-ignore
+import SvgIcon from '@jamescoyle/vue-icon';
+import { mdiAccountVoice, mdiAlphabetical } from '@mdi/js';
 import StandardGrid from '../cardgrid/StandardGrid.vue';
-import jsonData from '../../data.json';
-import { YoutubeData } from '../../types';
-import { useRouter } from 'vue-router';
 
-const wordDocs = ["Phonemes Cards", "Scope and Sequence"].map(n => ({ type: "doc", link: n, title: "Doc: " + n }));
-const videos = (jsonData as YoutubeData).phonicsPlaylist.videos.map(video => ({ type: "video", link: video.videoId, title: video.title }));
-
-// const items = [...wordDocs, ...videos];
-const router = useRouter();
-
-function clickMobile(data: any) {
-  if(data.type === 'doc') {
-    router.push("/mobile-viewer/phonics/" + data.link);
-  } else if (data.type === 'video') {
-    window.location.assign(`https://youtube.com/watch?v=${data.link}&list=${jsonData.phonicsPlaylist.playlistId}`);
-  }
-
-}
-function click(data: any) {
-  if(data.type === 'doc') {
-    window.location.assign(data.link + ".pdf");
-  } else if (data.type === 'video') {
-    window.location.assign(`https://youtube.com/watch?v=${data.link}&list=${jsonData.phonicsPlaylist.playlistId}`);
-  }
-}
-function download(data: any) {
-  window.location.assign(data.link + ".pdf");
-}
+const phonics: { title: string, icon: string, path: string }[] = [];
+phonics.push({ title: "Documents", icon: mdiAlphabetical, path: "/phonics/documents" });
+phonics.push({ title: "Videos", icon: mdiAccountVoice, path: "/phonics/videos"});
 
 </script>
 <style scoped>

@@ -18,6 +18,8 @@ import { BookGridType } from './types';
 import PhonicsGridVue from './components/phonics/PhonicsGrid.vue';
 import ManipulativesGridVue from './components/manipulatives/ManipulativesGrid.vue';
 import MainGridVue from './components/manipulatives/MainGrid.vue';
+import PhonicsDocumentGridVue from './components/phonics/PhonicsDocumentGrid.vue';
+import PhonicsVideosGridVue from './components/phonics/PhonicsVideosGrid.vue';
 
 function getBookFromNumber(bookNumber: any, bookAudio = true) {
     if(Number.isNaN(parseFloat(bookNumber))) return null;
@@ -101,6 +103,14 @@ const routes: RouteRecordRaw[] = [
     {
         path: '/phonics',
         component: PhonicsGridVue
+    },
+    {
+        path: '/phonics/documents',
+        component: PhonicsDocumentGridVue
+    },
+    {
+        path: '/phonics/videos',
+        component: PhonicsVideosGridVue
     },
     {
         path: '/manipulatives',
