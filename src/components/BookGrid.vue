@@ -8,18 +8,20 @@ import ManipulativesData from './manipulatives/data.json';
 const props = defineProps<{ type?: BookGridType }>();
 const data = props.type === BookGridType.VocabSupplement ? (rawData as YoutubeData).supplementVocabPlaylists : (rawData as YoutubeData).bookAudioPlaylists;
 
-const bookItems = computed(() => {
-    if(props.type === BookGridType.Songs) {
-        // Add Just for Fun category
-        return data.filter(p => (p.songs?.length ?? 0) > 0).sort((a, b) => a.playlistTitle.localeCompare(b.playlistTitle));
-    }
-    if(props.type === BookGridType.Manipulatives) {
-        // LOL terrible time complexity but only 7 books so it's fine
-        const includes = Object.keys(ManipulativesData).map(k => "Book " + k);
-        return data.filter(a => includes.findIndex(bookName => a.playlistTitle.includes(bookName)) >= 0);
-    }
-    return data;
-});
+const bookItems = computed(() =>
+    (() => {
+        if(props.type === BookGridType.Songs) {
+            // Add Just for Fun category
+            return data.filter(p => (p.songs?.length ?? 0) > 0);
+        }
+        if(props.type === BookGridType.Manipulatives) {
+            // LOL terrible time complexity but only 7 books so it's fine
+            const includes = Object.keys(ManipulativesData).map(k => "Book " + k);
+            return data.filter(a => includes.findIndex(bookName => a.playlistTitle.includes(bookName)) >= 0);
+        }
+        return data;
+    })().sort((a, b) => a.playlistTitle.localeCompare(b.playlistTitle))
+);
 
 function bookId(pId: string): string {
     const title = data.find(b => b.playlistId === pId)!.playlistTitle;
