@@ -10,7 +10,7 @@ import ChapterGridVue from './components/textbook-audio/ChapterGrid.vue';
 import VocabularyUnitGridVue from './components/supplement-audio/UnitGrid.vue';
 import VocabularyLessonGridVue from './components/supplement-audio/LessonGrid.vue';
 import SongGridVue from './components/songs/SongGrid.vue';
-import SupplementPdfGridVue from './components/lesson-plans/SupplementPdfGrid.vue';
+import LessonPlanGridVue from './components/lesson-plans/LessonPlanGrid.vue';
 import MobilePdfViewerVue from './components/MobilePdfViewer.vue';
 import PageNotFoundVue from './components/PageNotFound.vue';
 import youtubeData from './data.json';
@@ -103,7 +103,7 @@ const routes: RouteRecordRaw[] = [
     },
     {
         path: '/lesson-plans',
-        component: SupplementPdfGridVue
+        component: LessonPlanGridVue
     },
     // '/lesson-plans/:book' handled automatically by public folder
     {
