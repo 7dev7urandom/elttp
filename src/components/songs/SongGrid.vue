@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import StandardGrid from '../cardgrid/StandardGrid.vue';
 import { computed } from 'vue';
-import { Book } from '../../types';
+import { Book, YoutubeData } from '../../types';
 import data from '../../data.json';
 
 const props = defineProps<{ book: Book }>();
 
 const items = computed(() => {
-    if(!props.book) return data.justForFunSongs.videos;
+    if(!props.book) return (data as YoutubeData).justForFunSongs.videos;
     return props.book.songs?.map(s => ({ ...s, title: s.songName })) ?? [];
 });
 

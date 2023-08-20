@@ -25,16 +25,26 @@ export type Book = {
 export type YoutubeData = {
     bookAudioPlaylists: Book[];
     supplementVocabPlaylists: Book[];
-    phonicsPlaylist: {
-        videos: SimpleVideo[];
+    phonicsPlaylist: SimplePlaylist,
+    justForFunSongs: SimplePlaylist,
+    activities: {
+        games: {
+            gameTitle: string;
+            videos: (SimpleVideo & { fullTitle: string})[];
+        }[],
         playlistId: string;
         playlistName: string;
     }
-};
+}
 export type SimpleVideo = {
     videoId: string;
     title: string;
-};
+}
+export type SimplePlaylist = {
+    videos: SimpleVideo[];
+    playlistId: string;
+    playlistName: string;
+}
 export enum BookGridType {
     TextbookAudio,
     Songs,

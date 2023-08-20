@@ -57,9 +57,3 @@ function open(item: {path: string}) {
     router.push(item.path + "/");
 }
 </script>
-<style scoped>
-h2 {
-  text-align: left;
-  padding-left: 1em;
-}
-</style>

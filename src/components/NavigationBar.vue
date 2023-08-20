@@ -8,6 +8,11 @@ const routes = computed<string[]>(() => {
         return [];
     }
     switch(router.currentRoute.value.fullPath.split('/')[1]) {
+        case 'activities':
+            const activ = ["Activities"];
+            const gParam = router.currentRoute.value.params.game as string;
+            if(gParam) activ.push(gParam.split(" ").map(word => word[0].toUpperCase() + word.slice(1)).join(" "),);
+            return activ;
         case 'lesson-plans':
             return ["Lesson Plans"];
         case 'phonics':
