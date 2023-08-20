@@ -4,7 +4,7 @@
     :download-button-on-mobile="true"
     @select="click"
     @select-mobile="clickMobile"
-    @download="download"
+    @download="click"
   />
 </template>
 <script setup lang="ts">
@@ -16,12 +16,9 @@ const wordDocs = ["Phonemes Cards", "Scope and Sequence"].map(n => ({ link: n, t
 const router = useRouter();
 
 function clickMobile(data: any) {
-  router.push("/mobile-viewer/phonics/" + data.link);
+  router.push("/mobile-viewer/phonics/documents/" + data.link);
 }
 function click(data: any) {
-  window.location.assign(data.link + ".pdf");
-}
-function download(data: any) {
   window.location.assign(data.link + ".pdf");
 }
 </script>
