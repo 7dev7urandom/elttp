@@ -67,6 +67,7 @@ defineEmits<{
   box-shadow: 0 0 0.5em #00000033;
   border: var(--card-color) 1px solid;
   transition: all 300ms;
+  overflow: hidden;
 }
 
 .card:hover {
