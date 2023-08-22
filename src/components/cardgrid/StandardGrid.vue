@@ -49,6 +49,12 @@ function animDur(index: number, total: number) {
             :item="item"
           />
         </template>
+        <template
+          v-if="$slots.downloadButton"
+          #downloadButton
+        >
+          <slot name="downloadButton" />
+        </template>
       </StandardCard>
     </div>
   </div>

@@ -19,6 +19,8 @@
         >
           {{ title }}
         </h3>
+      </slot>
+      <slot name="downloadButton">
         <div
           v-if="isMobile() && downloadButtonOnMobile"
           id="divider"

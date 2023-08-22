@@ -4,6 +4,7 @@
     :download-button-on-mobile="true"
     :min-width="335"
     @select="openDoc"
+    @download="downloadMobile"
   >
     <span
       id="activitydoc"
@@ -17,18 +18,6 @@
       />
       <h3>Activities Document</h3>
     </span>
-    <div
-      v-if="isMobile()"
-      id="divider"
-    />
-    <svg-icon
-      v-if="isMobile()"
-      :path="mdiDownload"
-      type="mdi"
-      size="32"
-      class="downloadicon"
-      @click="downloadMobile"
-    />
   </StandardGrid>
   <h2>Games</h2>
   <StandardGrid
@@ -42,7 +31,7 @@ import StandardGrid from "../cardgrid/StandardGrid.vue";
 import jsonData from '../../data.json';
 import { YoutubeData } from "../../types";
 import { useRouter } from "vue-router";
-import { mdiFileDocument, mdiDownload } from '@mdi/js';
+import { mdiFileDocument } from '@mdi/js';
 // @ts-ignore
 import SvgIcon from '@jamescoyle/vue-icon';
 import { isMobile } from '../../util';
