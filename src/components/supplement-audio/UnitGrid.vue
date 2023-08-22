@@ -29,6 +29,7 @@ const items = computed(() => {
 <template>
   <StandardGrid
     :items="items"
+    :min-width="150"
     @select="(item: any) => $router.push(`${item.unit ?? 'other/' + props.book.lessons.find(l => l.title === item.title)?.videoId}/`)"
   />
 </template>

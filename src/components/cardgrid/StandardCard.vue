@@ -4,7 +4,7 @@
     :style="{
       padding: $slots.insidecard ? '0.5em': undefined,
     }"
-    @click="isMobile() && downloadButtonOnMobile && $attrs && $attrs.onSelectMobile ? 0 : $emit('select')"
+    @click="isMobile() && downloadButtonOnMobile ? 0 : $emit('select')"
   >
     <div
       class="card_content"

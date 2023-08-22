@@ -9,6 +9,7 @@ interface GenericItemEvents<T extends { title: string }> {
 interface GenericItemProps<T extends { title: string }> {
   items: T[];
   downloadButtonOnMobile?: boolean | ((item: T) => boolean);
+  minWidth?: number;
 }
 const props = defineProps<GenericItemProps<T>>();
 defineEmits<GenericItemEvents<T>>();
@@ -25,7 +26,7 @@ function animDur(index: number, total: number) {
 <template>
   <div
     class="grid"
-    :style="{ rowGap: $slots.default ? '2em' : '1em' }"
+    :style="{ rowGap: $slots.default ? '2em' : '1em', '--min-card-width': (minWidth ?? 260) + 'px' }"
   >
     <div
       v-for="(item, index) in props.items"
@@ -56,7 +57,7 @@ function animDur(index: number, total: number) {
 <style scoped>
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(var(--min-card-width), 1fr));
     grid-template-rows: repeat(auto-fill, minmax(0, 1fr));
     gap: 2em 1em;
     padding: 1em;
