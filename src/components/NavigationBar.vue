@@ -1,73 +1,88 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useRouter } from 'vue-router';
+import { computed } from "vue";
+import { useRouter } from "vue-router";
 
 const router = useRouter();
 const routes = computed<string[]>(() => {
-    if(router.currentRoute.value.fullPath === '/') {
-        return [];
-    }
-    switch(router.currentRoute.value.fullPath.split('/')[1]) {
-        case 'activities':
-            const activ = ["Activities"];
-            const gParam = router.currentRoute.value.params.game as string;
-            if(gParam) activ.push(gParam.split(" ").map(word => word[0].toUpperCase() + word.slice(1)).join(" "),);
-            return activ;
-        case 'lesson-plans':
-            return ["Lesson Plans"];
-        case 'phonics':
-            const phon = ["Phonics"];
-            switch(router.currentRoute.value.fullPath.split('/')[2]) {
-                case 'documents':
-                    phon.push("Documents");
-                    break;
-                case 'videos':
-                    phon.push("Videos");
-                    break;
-            }
-            return phon;
-        case 'manipulatives':
-            const manip = ["Manipulatives"];
-            if(router.currentRoute.value.params.book) manip.push("Book " + router.currentRoute.value.params.book);
-            return manip;
-        case 'supplement-audio':
-            const vocabSupplement = ["Supplement Audio"];
-            if(router.currentRoute.value.params.book) {
-                vocabSupplement.push(`Book ${router.currentRoute.value.params.book}`);
-            } else return vocabSupplement;
-            if(router.currentRoute.value.params.unit) {
-                vocabSupplement.push(`Unit ${router.currentRoute.value.params.unit}`);
-            } else return vocabSupplement;
-            return vocabSupplement;
-        case 'songs':
-            const songs = ['Songs'];
-            if(router.currentRoute.value.params.book) {
-                if(!Number.isNaN(parseFloat(router.currentRoute.value.params.book as string))) 
-                    songs.push(`Book ${router.currentRoute.value.params.book}`);
-                else
-                    songs.push("Just for Fun!");
-            }
-            return songs;
-        case 'textbook-audio':
-            const vocab = ['Textbook Audio'];
-            if(router.currentRoute.value.params.book) {
-                vocab.push(`Book ${router.currentRoute.value.params.book}`);
-            } else return vocab;
-            if(router.currentRoute.value.params.unit) {
-                vocab.push(`Unit ${router.currentRoute.value.params.unit}`);
-            } else return vocab;
-            if(router.currentRoute.value.params.lesson) {
-                vocab.push(`Lesson ${router.currentRoute.value.params.lesson}`);
-            } else return vocab;
-            return vocab;
-        case 'books':
-            return ['Books'];
-        default:
-            return ["Not Found"];
-    }
+  if (router.currentRoute.value.fullPath === "/") {
+    return [];
+  }
+  switch (router.currentRoute.value.fullPath.split("/")[1]) {
+    case "activities":
+      const activ = ["Activities"];
+      const gParam = router.currentRoute.value.params.game as string;
+      if (gParam)
+        activ.push(
+          gParam
+            .split(" ")
+            .map((word) => word[0].toUpperCase() + word.slice(1))
+            .join(" ")
+        );
+      return activ;
+    case "supplement-books":
+      return ["Supplement Books"];
+    case "phonics":
+      const phon = ["Phonics"];
+      switch (router.currentRoute.value.fullPath.split("/")[2]) {
+        case "documents":
+          phon.push("Documents");
+          break;
+        case "videos":
+          phon.push("Videos");
+          break;
+      }
+      return phon;
+    case "manipulatives":
+      const manip = ["Manipulatives"];
+      if (router.currentRoute.value.params.book)
+        manip.push("Book " + router.currentRoute.value.params.book);
+      return manip;
+    case "supplement-audio":
+      const vocabSupplement = ["Supplement Audio"];
+      if (router.currentRoute.value.params.book) {
+        vocabSupplement.push(`Book ${router.currentRoute.value.params.book}`);
+      } else return vocabSupplement;
+      if (router.currentRoute.value.params.unit) {
+        vocabSupplement.push(`Unit ${router.currentRoute.value.params.unit}`);
+      } else return vocabSupplement;
+      return vocabSupplement;
+    case "songs":
+      const songs = ["Songs"];
+      if (router.currentRoute.value.params.book) {
+        if (
+          !Number.isNaN(
+            parseFloat(router.currentRoute.value.params.book as string)
+          )
+        )
+          songs.push(`Book ${router.currentRoute.value.params.book}`);
+        else songs.push("Just for Fun!");
+      }
+      return songs;
+    case "textbook-audio":
+      const vocab = ["Textbook Audio"];
+      if (router.currentRoute.value.params.book) {
+        vocab.push(`Book ${router.currentRoute.value.params.book}`);
+      } else return vocab;
+      if (router.currentRoute.value.params.unit) {
+        vocab.push(`Unit ${router.currentRoute.value.params.unit}`);
+      } else return vocab;
+      if (router.currentRoute.value.params.lesson) {
+        vocab.push(`Lesson ${router.currentRoute.value.params.lesson}`);
+      } else return vocab;
+      return vocab;
+    case "books":
+      return ["Books"];
+    default:
+      return ["Not Found"];
+  }
 });
 function goToPart(part: number) {
-    router.push(router.currentRoute.value.fullPath.split('/').slice(0, part + 1).join('/') + '/');
+  router.push(
+    router.currentRoute.value.fullPath
+      .split("/")
+      .slice(0, part + 1)
+      .join("/") + "/"
+  );
 }
 </script>
 <template>
@@ -85,15 +100,15 @@ function goToPart(part: number) {
 </template>
 <style scoped>
 span.arrow::before {
-    content: ' > ';
-    text-decoration: none;
+  content: " > ";
+  text-decoration: none;
 }
 div {
-    text-align: start;
-    padding: 1em;
+  text-align: start;
+  padding: 1em;
 }
 span:not(.arrow) {
-    text-decoration: underline;
-    cursor: pointer;
+  text-decoration: underline;
+  cursor: pointer;
 }
 </style>
