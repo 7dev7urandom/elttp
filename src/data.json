@@ -659,8 +659,7 @@
           ],
           "title": "M7.2 Irregular Verbs"
         }
-      ],
-      "songs": []
+      ]
     },
     {
       "playlistId": "PLiyRkQ3Dn7Vt3OaATcPu5YPveSuANtIVr",
@@ -1526,8 +1525,7 @@
             }
           ]
         }
-      ],
-      "songs": []
+      ]
     },
     {
       "playlistId": "PLiyRkQ3Dn7Vtl6mixOy7z_oCx2KsUMXcp",
@@ -2168,8 +2166,7 @@
           ],
           "title": "Irregular Verbs"
         }
-      ],
-      "songs": []
+      ]
     },
     {
       "playlistId": "PLiyRkQ3Dn7VtkaaUaXiklxAt6EWTqZbKz",
@@ -2871,8 +2868,7 @@
             }
           ]
         }
-      ],
-      "songs": []
+      ]
     },
     {
       "playlistId": "PLiyRkQ3Dn7VsOh71ZuB3HajDm2nMtHfEM",
@@ -3587,14 +3583,6 @@
           "videoId": "03ol6YINi6A",
           "chapters": [],
           "title": "Glossary"
-        }
-      ],
-      "songs": [
-        {
-          "bookNumber": 4,
-          "unitNumber": 1,
-          "songName": "Brush, Brush, Brush Your Teeth",
-          "videoId": "MMDVwlBwEsc"
         }
       ]
     },
@@ -4334,8 +4322,7 @@
             }
           ]
         }
-      ],
-      "songs": []
+      ]
     },
     {
       "playlistId": "PLiyRkQ3Dn7VuuHdVn6ih1gyiOK1Pzcg0v",
@@ -5033,8 +5020,7 @@
             }
           ]
         }
-      ],
-      "songs": []
+      ]
     },
     {
       "playlistId": "PLiyRkQ3Dn7VtPpD3d-1RKb4KxDuoJUQPq",
@@ -5867,26 +5853,6 @@
               "title": "6.Read and Answer"
             }
           ]
-        }
-      ],
-      "songs": [
-        {
-          "bookNumber": 1,
-          "unitNumber": 1,
-          "songName": "Hello",
-          "videoId": "8Hbz6mVgnUQ"
-        },
-        {
-          "bookNumber": 1,
-          "unitNumber": 2,
-          "songName": "I, You, He, She, It",
-          "videoId": "XufNc-ko38A"
-        },
-        {
-          "bookNumber": 1,
-          "unitNumber": 7,
-          "songName": "1 + 1 = 2",
-          "videoId": "93GWJVF2joc"
         }
       ]
     }
@@ -6787,24 +6753,121 @@
     "playlistId": "PLiyRkQ3Dn7Vt3ssFwBNzpsbbi7vHz09_-",
     "playlistName": "Phonics"
   },
-  "justForFunSongs": {
-    "videos": [
+  "songs": {
+    "categories": [
       {
-        "videoId": "Hp7tlpY8fro",
-        "title": "Peel Banana"
+        "name": "Peel Banana",
+        "videos": [
+          {
+            "title": "Peel Banana",
+            "videoId": "Hp7tlpY8fro",
+            "lyrics": ""
+          }
+        ]
       },
       {
-        "videoId": "I565W_mTtv0",
-        "title": "Hello Hello Hello"
+        "name": "Hello Hello Hello",
+        "videos": [
+          {
+            "title": "Hello Hello Hello",
+            "videoId": "I565W_mTtv0",
+            "lyrics": ""
+          }
+        ]
+      },
+      {
+        "name": "Hello",
+        "videos": [
+          {
+            "title": "Hello",
+            "videoId": "8Hbz6mVgnUQ",
+            "lyrics": ""
+          }
+        ]
+      },
+      {
+        "name": "I, You, He, She, It",
+        "videos": [
+          {
+            "title": "I, You, He, She, It",
+            "videoId": "XufNc-ko38A",
+            "lyrics": ""
+          }
+        ]
+      },
+      {
+        "name": "1 + 1 = 2",
+        "videos": [
+          {
+            "title": "1 + 1 = 2",
+            "videoId": "93GWJVF2joc",
+            "lyrics": ""
+          }
+        ]
+      },
+      {
+        "name": "Brush, Brush, Brush Your Teeth",
+        "videos": [
+          {
+            "title": "Brush, Brush, Brush Your Teeth",
+            "videoId": "MMDVwlBwEsc",
+            "lyrics": ""
+          }
+        ]
+      },
+      {
+        "name": "We're going to the Zoo",
+        "videos": [
+          {
+            "title": "We're going to the Zoo",
+            "videoId": "3HAf08SlIiM",
+            "lyrics": "We're going to the zoo.\nWhat about you?\nYou can come too\nWe're going to the zoo\n\nSee the Kangaroo\nIt's hop hop hopping\nWe can stay all day\n\nWe're going to the zoo.\nWhat about you?\nYou can come too\nWe're going to the zoo"
+          }
+        ]
+      },
+      {
+        "name": "What is this? Can you tell me?",
+        "videos": [
+          {
+            "title": "Teacher",
+            "videoId": "jM_yXXRt6g0",
+            "lyrics": "What is this? What is this?\nCan you tell me? Can you tell me?\n\nThat is a Zebra. That is a Zebra. \n\nWhat is this? What is this?\nCan you tell me? Can you tell me?\n\nThat is an Elephant. That is an Elephant."
+          },
+          {
+            "title": "Class",
+            "videoId": "eENKQ0UcE-I",
+            "lyrics": "What is this? What is this?\nCan you tell me? Can you tell me?\n\nThis is a pen. This is a pen. \n\nWhat is this? What is this?\nCan you tell me? Can you tell me?\n\nThis is a book. This is a book. \n\nWhat is this? What is this?\nCan you tell me? Can you tell me?\n\nThis is a chair. This is a chair. \n\nWhat is this? What is this?\nCan you tell me? Can you tell me?"
+          }
+        ]
+      },
+      {
+        "name": "Southeast Asia",
+        "videos": [
+          {
+            "title": "Southeast Asia",
+            "videoId": "qswuxfb-eo0",
+            "lyrics": ""
+          }
+        ]
+      },
+      {
+        "name": "Missing You!",
+        "videos": [
+          {
+            "title": "Missing You!",
+            "videoId": "Fw5hHMOq1hI",
+            "lyrics": ""
+          }
+        ]
       }
     ],
     "playlistId": "PLiyRkQ3Dn7VsjYpQwE6_WGOmnFH7x8Wi-",
-    "playlistName": "Songs Just for Fun"
+    "playlistName": "Songs"
   },
   "activities": {
-    "games": [
+    "categories": [
       {
-        "gameTitle": "boop boop",
+        "name": "boop boop",
         "videos": [
           {
             "videoId": "Fwr5O9ixPdc",

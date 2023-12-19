@@ -8,6 +8,7 @@
   background-color: #242424;
   --card-color: #444;
   --card-border-color: #aaa;
+  --backtint-color: #303030;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -71,8 +72,9 @@ button:focus-visible {
   :root {
     color: #000;
     background-color: #eeeeee;
-    --card-color: #ccc;
+    --card-color: #ddd;
     --card-border-color: #888;
+    --backtint-color: #cfcfcf;
   }
   a:hover {
     color: #747bff;

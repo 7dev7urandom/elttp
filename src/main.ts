@@ -22,6 +22,7 @@ import PhonicsDocumentGridVue from "./components/phonics/PhonicsDocumentGrid.vue
 import PhonicsVideosGridVue from "./components/phonics/PhonicsVideosGrid.vue";
 import ActivitiesGridVue from "./components/activities/ActivitiesGrid.vue";
 import ActivitiesGameGridVue from "./components/activities/ActivitiesGameGrid.vue";
+import SongDisplayVue from "./components/songs/SongDisplay.vue";
 
 function getBookFromNumber(bookNumber: any, bookAudio = true) {
   if (Number.isNaN(parseFloat(bookNumber))) return null;
@@ -148,16 +149,16 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: "/songs",
-    component: BookGridVue,
-    props: {
-      type: BookGridType.Songs,
-    },
+    component: SongGridVue,
+    // props: {
+    //   type: BookGridType.Songs,
+    // },
   },
   {
-    path: "/songs/:book",
-    component: SongGridVue,
+    path: "/songs/:category",
+    component: SongDisplayVue,
     props: ({ params }) => ({
-      book: getBookFromNumber(params.book),
+      categoryName: params.category,
     }),
   },
   {

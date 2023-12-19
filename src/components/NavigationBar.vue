@@ -48,14 +48,8 @@ const routes = computed<string[]>(() => {
       return vocabSupplement;
     case "songs":
       const songs = ["Songs"];
-      if (router.currentRoute.value.params.book) {
-        if (
-          !Number.isNaN(
-            parseFloat(router.currentRoute.value.params.book as string)
-          )
-        )
-          songs.push(`Book ${router.currentRoute.value.params.book}`);
-        else songs.push("Just for Fun!");
+      if (router.currentRoute.value.params.category) {
+        songs.push(router.currentRoute.value.params.category as string);
       }
       return songs;
     case "textbook-audio":

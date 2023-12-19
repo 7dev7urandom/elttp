@@ -19,16 +19,20 @@
       </h3>
     </StandardGrid>
   </div>
-  <h2>ELTTP Supplements</h2>
-  <StandardGrid v-slot="{ item }" :items="elttpSupplements" @select="open">
-    <!-- Include title and icon -->
-    <svg-icon :path="(item as any).icon" type="mdi" size="128" />
-    <h3 class="book-card_title">
-      {{ item.title }}
-    </h3>
-  </StandardGrid>
-  <h2>Teaching Reading</h2>
-  <PhonicsGrid />
+  <div class="backtint">
+    <h2>ELTTP Supplements</h2>
+    <StandardGrid v-slot="{ item }" :items="elttpSupplements" @select="open">
+      <!-- Include title and icon -->
+      <svg-icon :path="(item as any).icon" type="mdi" size="128" />
+      <h3 class="book-card_title">
+        {{ item.title }}
+      </h3>
+    </StandardGrid>
+  </div>
+  <div class="backtint">
+    <h2>Teaching Reading</h2>
+    <PhonicsGrid />
+  </div>
 </template>
 <script setup lang="ts">
 import StandardGrid from "../components/cardgrid/StandardGrid.vue";
@@ -84,14 +88,16 @@ function open(item: { path: string }) {
 </script>
 <style scoped>
 h2 {
-  font-size: 3.2em;
+  font-size: 3em;
   line-height: 1;
-  padding-left: 0.5em;
+  padding-left: 0.3em;
+  margin-block: 0.5em;
 }
 .backtint {
-  background-color: #ccc;
+  background-color: var(--backtint-color);
   border-radius: 10px;
   padding: 3px;
+  padding-bottom: 7px;
   margin: 10px 0 10px 0;
 }
 </style>

@@ -65,11 +65,11 @@ defineEmits<{
   /* padding: .5em; */
   border-radius: 0.5em;
   background-color: var(--card-color);
-  box-shadow: 0 0 0.5em #00000033;
+  /* box-shadow: 0 0 0.5em #00000033; */
   border: var(--card-color) 1px solid;
   transition: all 300ms;
   overflow: hidden;
-  box-shadow: 0 0 1em #00000033;
+  box-shadow: 0 0 1em #00000066;
 }
 
 .card:hover {

@@ -1,23 +1,25 @@
 <script setup lang="ts">
-import StandardGrid from '../cardgrid/StandardGrid.vue';
-import { computed } from 'vue';
-import { Book, YoutubeData } from '../../types';
-import data from '../../data.json';
+import StandardGrid from "../cardgrid/StandardGrid.vue";
+import { computed } from "vue";
+import { YoutubeData } from "../../types";
+import data from "../../data.json";
+import { useRouter } from "vue-router";
 
-const props = defineProps<{ book: Book }>();
+// const props = defineProps<{ book: Book }>();
 
 const items = computed(() => {
-    if(!props.book) return (data as YoutubeData).justForFunSongs.videos;
-    return props.book.songs?.map(s => ({ ...s, title: s.songName })) ?? [];
+  return (data as YoutubeData).songs.categories.map((category) => ({
+    title: category.name,
+    ...category,
+  }));
 });
 
-function openSong(song: any) {
-    window.location.assign(`https://www.youtube.com/watch?v=${song.videoId}&list=${(props.book ?? data.justForFunSongs).playlistId}`);
+const router = useRouter();
+
+function openSong(category: YoutubeData["songs"]["categories"][0]) {
+  router.push(encodeURIComponent(category.name));
 }
 </script>
 <template>
-  <StandardGrid
-    :items="items"
-    @select="(s: any) => openSong(s)"
-  />
+  <StandardGrid :items="items" @select="(s: any) => openSong(s)" />
 </template>
