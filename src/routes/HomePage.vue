@@ -100,4 +100,7 @@ h2 {
   padding-bottom: 7px;
   margin: 10px 0 10px 0;
 }
+h3 {
+  margin-block-end: 0.5em;
+}
 </style>
