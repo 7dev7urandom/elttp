@@ -13,10 +13,6 @@ const data =
 
 const bookItems = computed(() =>
   (() => {
-    if (props.type === BookGridType.Songs) {
-      // Add Just for Fun category
-      return data.filter((p) => (p.songs?.length ?? 0) > 0);
-    }
     if (props.type === BookGridType.Manipulatives) {
       // LOL terrible time complexity but only 7 books so it's fine
       const includes = Object.keys(ManipulativesData).map((k) => "Book " + k);
@@ -46,11 +42,6 @@ type X = Book & { title: string };
 </script>
 
 <template>
-  <StandardGrid
-    v-if="type === BookGridType.Songs"
-    :items="[{ title: 'Just for Fun!' }]"
-    @select="$router.push('jff/')"
-  />
   <StandardGrid
     v-slot="{ item }"
     :items="bookItems as unknown as X[]"

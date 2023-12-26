@@ -26,7 +26,6 @@ const lyrics = computed(
     `No lyrics for
       ${selected.value!.title}`
 );
-console.log(data.songs.categories, props);
 </script>
 <style scoped>
 @media screen and (min-width: 1200px) {
