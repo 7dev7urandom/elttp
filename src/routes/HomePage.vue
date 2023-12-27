@@ -1,7 +1,7 @@
 <template>
   <div class="backtint">
     <h2>M1-M7 Sample Lesson Videos</h2>
-    <StandardGrid v-slot="{ item }" :items="testlist" @select="open">
+    <StandardGrid v-slot="{ item }" :items="sampleLessonVideos" @select="open">
       <!-- Include title and icon -->
       <img v-if="item.image" :src="item.image" :alt="item.title" height="128" />
       <svg-icon v-else :path="(item as any).icon" type="mdi" size="128" />
@@ -45,6 +45,17 @@ import SvgIcon from "@jamescoyle/vue-icon";
 import { useRouter } from "vue-router";
 import PhonicsGrid from "../components/phonics/PhonicsGrid.vue";
 
+const sampleLessonVideos: {
+  title: string;
+  icon?: string;
+  image?: string;
+  path: string;
+}[] = [];
+sampleLessonVideos.push({
+  title: "Sample Lesson Videos",
+  icon: mdiPlay,
+  path: "/sample-lessons",
+});
 const teachingAids: {
   title: string;
   icon?: string;
@@ -81,17 +92,6 @@ elttpSupplements.push({
   title: "Supplement Audio",
   icon: mdiVolumeHigh,
   path: "/supplement-audio",
-});
-const testlist: {
-  title: string;
-  icon?: string;
-  image?: string;
-  path: string;
-}[] = [];
-testlist.push({
-  title: "Sample Lesson Videos",
-  icon: mdiPlay,
-  path: "/",
 });
 
 const router = useRouter();

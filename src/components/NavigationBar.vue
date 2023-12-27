@@ -66,6 +66,12 @@ const routes = computed<string[]>(() => {
       return vocab;
     case "books":
       return ["Books"];
+    case "sample-lessons":
+      const sampleLessons = ["Sample Lesson Videos"];
+      if (router.currentRoute.value.params.category) {
+        sampleLessons.push(router.currentRoute.value.params.category as string);
+      }
+      return sampleLessons;
     default:
       return ["Not Found"];
   }

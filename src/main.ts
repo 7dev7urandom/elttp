@@ -23,6 +23,8 @@ import PhonicsVideosGridVue from "./components/phonics/PhonicsVideosGrid.vue";
 import ActivitiesGridVue from "./components/activities/ActivitiesGrid.vue";
 import ActivitiesGameGridVue from "./components/activities/ActivitiesGameGrid.vue";
 import SongDisplayVue from "./components/songs/SongDisplay.vue";
+import SampleLessonsGridVue from "./components/sample-lessons/SampleLessonsGrid.vue";
+import SampleLessonSpecificGridVue from "./components/sample-lessons/SampleLessonSpecificGrid.vue";
 
 function getBookFromNumber(bookNumber: any, bookAudio = true) {
   if (Number.isNaN(parseFloat(bookNumber))) return null;
@@ -160,6 +162,15 @@ const routes: RouteRecordRaw[] = [
     props: ({ params }) => ({
       categoryName: params.category,
     }),
+  },
+  {
+    path: "/sample-lessons",
+    component: SampleLessonsGridVue,
+  },
+  {
+    path: "/sample-lessons/:category",
+    component: SampleLessonSpecificGridVue,
+    props: true,
   },
   {
     path: "/:pathMatch(.*)*",

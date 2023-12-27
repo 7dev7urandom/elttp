@@ -27,7 +27,8 @@ export type YoutubeData = {
   supplementVocabPlaylists: Book[];
   phonicsPlaylist: SimplePlaylist;
   songs: CategorizedVideos<SimpleVideo & { lyrics: string }>;
-  activities: CategorizedVideos<SimpleVideo & { fullTitle: string }>;
+  activities: CategorizedVideos<FullTitleVideo>;
+  sampleLessons: CategorizedVideos<FullTitleVideo>;
 };
 export type CategorizedVideos<T extends SimpleVideo> = {
   categories: {
@@ -39,6 +40,7 @@ export type SimpleVideo = {
   videoId: string;
   title: string;
 };
+export type FullTitleVideo = SimpleVideo & { fullTitle: string };
 export type SimplePlaylist = {
   videos: SimpleVideo[];
 } & PlaylistMetadata;

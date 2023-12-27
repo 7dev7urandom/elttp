@@ -34,10 +34,10 @@ import SvgIcon from "@jamescoyle/vue-icon";
 import { mdiDownload } from "@mdi/js";
 
 const items = (jsonData as YoutubeData).activities.categories.map((game) => ({
-  title: game.name
-    .split(" ")
-    .map((word) => word[0].toUpperCase() + word.slice(1))
-    .join(" "),
+  title: game.name,
+  // .split(" ")
+  // .map((word) => word[0].toUpperCase() + word.slice(1))
+  // .join(" "),
   link: game.name,
 }));
 const router = useRouter();
