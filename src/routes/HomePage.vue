@@ -39,7 +39,6 @@
 </template>
 <script setup lang="ts">
 import StandardGrid from "../components/cardgrid/StandardGrid.vue";
-import { mdiDraw, mdiMusic, mdiPlay, mdiVolumeHigh } from "@mdi/js";
 // @ts-ignore
 import SvgIcon from "@jamescoyle/vue-icon";
 import { useRouter } from "vue-router";
@@ -53,7 +52,8 @@ const sampleLessonVideos: {
 }[] = [];
 sampleLessonVideos.push({
   title: "Sample Lesson Videos",
-  icon: mdiPlay,
+  // icon: mdiPlay,
+  image: "/samplelessonscover.jpg",
   path: "/sample-lessons",
 });
 const teachingAids: {
@@ -75,10 +75,11 @@ teachingAids.push({
 });
 teachingAids.push({
   title: "Manipulatives",
-  icon: mdiDraw,
+  // icon: mdiDraw,
+  image: "/manipulativescover.jpg",
   path: "/manipulatives",
 });
-teachingAids.push({ title: "Songs", icon: mdiMusic, path: "/songs" });
+teachingAids.push({ title: "Songs", image: "/songscover.jpg", path: "/songs" });
 
 const elttpSupplements: {
   title: string;
@@ -93,8 +94,9 @@ elttpSupplements.push({
   path: "/supplement-books",
 });
 elttpSupplements.push({
-  title: "Supplement Audio",
-  icon: mdiVolumeHigh,
+  title: "Audio for Supplements",
+  // icon: mdiVolumeHigh,
+  image: "/supplementaudiocover.jpg",
   path: "/supplement-audio",
 });
 

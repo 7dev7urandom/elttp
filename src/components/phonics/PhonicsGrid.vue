@@ -5,7 +5,8 @@
     @select="(it) => $router.push(it.path + '/')"
   >
     <!-- Include title and icon -->
-    <svg-icon :path="(item as any).icon" type="mdi" size="128" />
+    <img v-if="item.image" :src="item.image" :alt="item.title" height="128" />
+    <svg-icon v-else :path="(item as any).icon" type="mdi" size="128" />
     <h3 class="book-card_title">
       {{ item.title }}
     </h3>
@@ -14,18 +15,22 @@
 <script setup lang="ts">
 // @ts-ignore
 import SvgIcon from "@jamescoyle/vue-icon";
-import { mdiAccountVoice, mdiAlphabetical } from "@mdi/js";
 import StandardGrid from "../cardgrid/StandardGrid.vue";
 
-const phonics: { title: string; icon: string; path: string }[] = [];
+const phonics: {
+  title: string;
+  icon?: string;
+  image?: string;
+  path: string;
+}[] = [];
 phonics.push({
   title: "Phonics Documents",
-  icon: mdiAlphabetical,
+  image: "/phonics/documentcover.jpg",
   path: "/phonics/documents",
 });
 phonics.push({
   title: "Phonics Videos",
-  icon: mdiAccountVoice,
+  image: "/phonics/cover.jpg",
   path: "/phonics/videos",
 });
 </script>
