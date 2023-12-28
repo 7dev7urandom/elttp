@@ -49,7 +49,7 @@ const currentVideoObj = computed(
         Click on
         <svg
           id="Layer_1"
-          fill="#000000"
+          fill="currentColor"
           width="16px"
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
@@ -115,5 +115,12 @@ img {
 }
 svg {
   color: white;
+  top: 3px;
+  position: relative;
+}
+@media (prefers-color-scheme: light) {
+  svg {
+    color: black;
+  }
 }
 </style>
