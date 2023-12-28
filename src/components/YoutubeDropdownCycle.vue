@@ -78,4 +78,8 @@ iframe {
   margin: 20px 0 0 0;
   width: 100%;
 }
+select {
+  padding: 15px;
+  font-size: 1.2em;
+}
 </style>

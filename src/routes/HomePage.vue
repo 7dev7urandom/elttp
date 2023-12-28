@@ -39,7 +39,7 @@
 </template>
 <script setup lang="ts">
 import StandardGrid from "../components/cardgrid/StandardGrid.vue";
-import { mdiDraw, mdiMusic, mdiPlay, mdiRun, mdiVolumeHigh } from "@mdi/js";
+import { mdiDraw, mdiMusic, mdiPlay, mdiVolumeHigh } from "@mdi/js";
 // @ts-ignore
 import SvgIcon from "@jamescoyle/vue-icon";
 import { useRouter } from "vue-router";
@@ -68,7 +68,11 @@ teachingAids.push({
   image: "/bookCovers/sectioncover.png",
   path: "/textbook-audio",
 });
-teachingAids.push({ title: "Activities", icon: mdiRun, path: "/activities" });
+teachingAids.push({
+  title: "Activities",
+  image: "/activities/cover.jpg",
+  path: "/activities",
+});
 teachingAids.push({
   title: "Manipulatives",
   icon: mdiDraw,
