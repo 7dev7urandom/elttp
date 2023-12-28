@@ -6972,8 +6972,8 @@
         "videos": [
           {
             "videoId": "ElQogwYepDU",
-            "title": "countries with map",
-            "fullTitle": "M1U3L1 countries with map"
+            "title": "Countries with map",
+            "fullTitle": "M1U3L1 Countries with map"
           }
         ]
       },
@@ -6981,19 +6981,9 @@
         "name": "M1U4L1",
         "videos": [
           {
-            "videoId": "6vUgm37cAtk",
-            "title": "Students find their match and put themselves in order",
-            "fullTitle": "M1U4L1 Students find their match and put themselves in order"
-          },
-          {
-            "videoId": "hEymGWYkffw",
-            "title": "More Numbers review - Read the English & say the Lao",
-            "fullTitle": "M1U4L1 More Numbers review - Read the English & say the Lao"
-          },
-          {
-            "videoId": "j7jq4BnjWgo",
-            "title": "Relay run and write",
-            "fullTitle": "M1U4L1 Relay run and write"
+            "videoId": "ec2wGPzSUTA",
+            "title": "Vocabulary with review",
+            "fullTitle": "M1U4L1 Vocabulary with review"
           },
           {
             "videoId": "qQotH_SKM7s",
@@ -7001,9 +6991,19 @@
             "fullTitle": "M1U4L1 Review with the Lao erased - students are practicing reading the English word"
           },
           {
-            "videoId": "ec2wGPzSUTA",
-            "title": "Vocabulary with review",
-            "fullTitle": "M1U4L1 Vocabulary with review"
+            "videoId": "hEymGWYkffw",
+            "title": "More numbers review - read the English & say the Lao",
+            "fullTitle": "M1U4L1 More numbers review - read the English & say the Lao"
+          },
+          {
+            "videoId": "6vUgm37cAtk",
+            "title": "Students find their match and put themselves in order",
+            "fullTitle": "M1U4L1 Students find their match and put themselves in order"
+          },
+          {
+            "videoId": "j7jq4BnjWgo",
+            "title": "Relay Run and Write",
+            "fullTitle": "M1U4L1 Relay Run and Write"
           }
         ]
       },
@@ -7011,9 +7011,14 @@
         "name": "M1U4L2",
         "videos": [
           {
+            "videoId": "ieZzblthxzA",
+            "title": "Another review for the numbers",
+            "fullTitle": "M1U4L2 Another review for the numbers"
+          },
+          {
             "videoId": "zZ6Nl4aAWMw",
-            "title": "M1U4L2",
-            "fullTitle": "M1U4L2"
+            "title": "Base sentence practice",
+            "fullTitle": "M1U4L2 Base sentence practice"
           },
           {
             "videoId": "-3GQBfQ23Eg",
@@ -7024,11 +7029,6 @@
             "videoId": "7PbRz-uJJ5Q",
             "title": "Pass Pass Game - Numbers",
             "fullTitle": "M1U4L2 Pass Pass Game - Numbers"
-          },
-          {
-            "videoId": "ieZzblthxzA",
-            "title": "Another review for the numbers",
-            "fullTitle": "M1U4L2 Another review for the numbers"
           },
           {
             "videoId": "rl7arG5KUf8",
@@ -7047,8 +7047,8 @@
           },
           {
             "videoId": "LWfDne8EAFo",
-            "title": "Review Activity - half class, half class",
-            "fullTitle": "M1U4L2 Review Activity - half class, half class"
+            "title": "Review activity - half class, half class",
+            "fullTitle": "M1U4L2 Review activity - half class, half class"
           },
           {
             "videoId": "k8bd4UZMnLg",
@@ -7062,13 +7062,13 @@
         "videos": [
           {
             "videoId": "0O1xzOpiwUw",
-            "title": "Base Sentence Practice",
-            "fullTitle": "M1U5L1 Base Sentence Practice"
+            "title": "Base sentence practice",
+            "fullTitle": "M1U5L1 Base sentence practice"
           },
           {
             "videoId": "siXQm1LnkTE",
-            "title": "Lesson Summary with a Song",
-            "fullTitle": "M1U5L1 Lesson Summary with a Song"
+            "title": "Lesson summary with a song",
+            "fullTitle": "M1U5L1 Lesson summary with a song"
           },
           {
             "videoId": "imhMFLRfTjk",
@@ -7082,13 +7082,13 @@
         "videos": [
           {
             "videoId": "TOX8XQNCaGI",
-            "title": "Pass Pass Small Group Whole Class",
-            "fullTitle": "M1U6L3 Pass Pass Small Group Whole Class"
+            "title": "Pass Pass with small group and whole class",
+            "fullTitle": "M1U6L3 Pass Pass with small group and whole class"
           },
           {
             "videoId": "GzSqA8P-EQQ",
-            "title": "Vocabulary Review",
-            "fullTitle": "M1U6L3 Vocabulary Review"
+            "title": "Vocabulary review",
+            "fullTitle": "M1U6L3 Vocabulary review"
           }
         ]
       },
@@ -7097,13 +7097,8 @@
         "videos": [
           {
             "videoId": "WFzVb1RWf8M",
-            "title": "Explaining the Base Sentence",
-            "fullTitle": "M2U3L3 Explaining the Base Sentence"
-          },
-          {
-            "videoId": "o-tHUjT1cfg",
-            "title": "half class, half class practicing the Base Sentence",
-            "fullTitle": "M2U3L3 half class, half class practicing the Base Sentence"
+            "title": "Explaining the base sentence",
+            "fullTitle": "M2U3L3 Explaining the base sentence"
           },
           {
             "videoId": "IiFEbOVKivU",
@@ -7114,6 +7109,11 @@
             "videoId": "jvJgJJIC1tA",
             "title": "Adding more verb phrases",
             "fullTitle": "M2U3L3 Adding more verb phrases"
+          },
+          {
+            "videoId": "o-tHUjT1cfg",
+            "title": "Half class/half class practicing the base sentence",
+            "fullTitle": "M2U3L3 Half class/half class practicing the base sentence"
           },
           {
             "videoId": "l8XD_6U5esM",
@@ -7132,14 +7132,19 @@
           },
           {
             "videoId": "gKqmrXP7bbA",
-            "title": "summary at the end of the lesson",
-            "fullTitle": "M2U3L3 summary at the end of the lesson"
+            "title": "Summary at the end of the lesson",
+            "fullTitle": "M2U3L3 Summary at the end of the lesson"
           }
         ]
       },
       {
         "name": "M2U8L2",
         "videos": [
+          {
+            "videoId": "qGzRqGXh9wQ",
+            "title": "Vocabulary review",
+            "fullTitle": "M2U8L2 Vocabulary review"
+          },
           {
             "videoId": "21BY5p1Kv-A",
             "title": "Base Sentence Practice",
@@ -7149,11 +7154,6 @@
             "videoId": "oUDto6_omGQ",
             "title": "Base Sentence part 2",
             "fullTitle": "M2U8L2 Base Sentence part 2"
-          },
-          {
-            "videoId": "qGzRqGXh9wQ",
-            "title": "Vocabulary review",
-            "fullTitle": "M2U8L2 Vocabulary review"
           },
           {
             "videoId": "Jqiu1q0n1ZE",
