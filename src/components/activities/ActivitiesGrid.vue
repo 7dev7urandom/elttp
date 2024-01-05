@@ -41,17 +41,24 @@ const items = (jsonData as YoutubeData).activities.categories.map((game) => ({
   link: game.name,
 }));
 const router = useRouter();
+let isClicking = false;
 function openDoc() {
   // setTimeout(() => {
   console.log("openDoc", isMobile());
   if (isMobile())
     // Stupid hack to get around the whole button click triggering before the download button click
-    setTimeout(() => router.push("/mobile-viewer/activities/Activities"), 100);
+    setTimeout(() => {
+      if (!isClicking) {
+        router.push("/mobile-viewer/activities/Activities");
+      }
+      isClicking = false;
+    }, 100);
   else window.location.assign("Activities.pdf");
   // }, 10);
 }
 function downloadMobile() {
   window.location.assign("Activities.pdf");
+  isClicking = true;
 }
 </script>
 <style scoped>

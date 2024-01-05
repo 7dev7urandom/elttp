@@ -29,8 +29,10 @@ import SvgIcon from "@jamescoyle/vue-icon";
 
 const router = useRouter();
 
+let isClicking = false;
 function downloadMobile(data: any) {
   window.location.assign(data.link + ".pdf");
+  isClicking = true;
 }
 function loadPdfMobile(data: any) {
   router.push("/mobile-viewer/supplement-books/" + data.link);
@@ -38,7 +40,12 @@ function loadPdfMobile(data: any) {
 function loadPdf(data: any) {
   if (isMobile())
     // Stupid hack to get around the whole button click triggering before the download button click
-    setTimeout(() => loadPdfMobile(data), 100);
+    setTimeout(() => {
+      if (!isClicking) {
+        loadPdfMobile(data);
+      }
+      isClicking = false;
+    }, 100);
   else window.location.assign(data.link + ".pdf");
 }
 function getBookCover(item: any) {
