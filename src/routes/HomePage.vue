@@ -90,7 +90,7 @@ const elttpSupplements: {
 elttpSupplements.push({
   title: "Supplement Books",
   // icon: mdiBookPlus,
-  image: "/bookCovers/lesson-plans/sectioncover.png",
+  image: "/bookCovers/supplement-books/sectioncover.png",
   path: "/supplement-books",
 });
 elttpSupplements.push({

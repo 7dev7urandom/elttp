@@ -33,7 +33,7 @@ function downloadMobile(data: any) {
   window.location.assign(data.link + ".pdf");
 }
 function loadPdfMobile(data: any) {
-  router.push("/mobile-viewer/lesson-plans/" + data.link);
+  router.push("/mobile-viewer/supplement-books/" + data.link);
 }
 function loadPdf(data: any) {
   if (isMobile())
@@ -42,7 +42,7 @@ function loadPdf(data: any) {
   else window.location.assign(data.link + ".pdf");
 }
 function getBookCover(item: any) {
-  return `/bookCovers/lesson-plans/${item.link}.jpg`;
+  return `/bookCovers/supplement-books/${item.link}.jpg`;
 }
 const pdfFiles = ["1", "2", "3", "4"].map((n) => ({
   link: "M" + n,
