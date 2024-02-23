@@ -17,7 +17,7 @@
       </div>
     </div>
   </StandardGrid>
-  <h2>Games</h2>
+  <h2>Activities</h2>
   <StandardGrid
     :items="items"
     @select="(a: any) => $router.push(encodeURIComponent(a.link))"
