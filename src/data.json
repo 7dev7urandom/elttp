@@ -7208,22 +7208,22 @@
         ]
       },
       {
-        "name": "M4U3L2",
-        "videos": [
-          {
-            "videoId": "M_cqKfRvlxE",
-            "title": "Setting up verb phrases for the base sentences",
-            "fullTitle": "M4U3L2 Setting up verb phrases for the base sentences"
-          }
-        ]
-      },
-      {
         "name": "M4U3L1",
         "videos": [
           {
             "videoId": "6yc-gsRCxcY",
             "title": "Review Day 1",
             "fullTitle": "M4U3L1 Review Day 1"
+          }
+        ]
+      },
+      {
+        "name": "M4U3L2",
+        "videos": [
+          {
+            "videoId": "M_cqKfRvlxE",
+            "title": "Setting up verb phrases for the base sentences",
+            "fullTitle": "M4U3L2 Setting up verb phrases for the base sentences"
           }
         ]
       },
